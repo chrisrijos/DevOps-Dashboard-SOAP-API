@@ -1,0 +1,25 @@
+{
+  "name": "software",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "angular": "*",
+    "angular-ui-router": "*",
+    "body-parser": "*",
+    "bootstrap": "*",
+    "express": "*",
+    "jquery": "*",
+    "method-override": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "nodemon": "*",
+    "sass": "*",
+    "font-awesome": "*"
+  },
+  "author": "",
+  "license": "ISC"
+}

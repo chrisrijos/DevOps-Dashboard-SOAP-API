@@ -7,6 +7,7 @@ var morgan    = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var routes = require('./routes.js')(app);
+var models = require('./models/schemas.js');
 
 //config dom assets
 app.use(express.static(__dirname + '/public'));

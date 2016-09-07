@@ -10,7 +10,7 @@ var routes = require('./routes.js')(app);
 
 dynamoose.AWS.config.update({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: AWS_SECRET_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       region: 'us-east-1'
 });
 
@@ -20,7 +20,7 @@ var sampleMessage = new Message({id: 1011, body: "First Message"});
 sampleMessage.save();
 Message.get(1011)
     .then(function (test) {
-        console.log("First Message: " + sampleMessage.body);    
+        console.log("First Message: " + sampleMessage.body);
 });
 
 //config dom assets

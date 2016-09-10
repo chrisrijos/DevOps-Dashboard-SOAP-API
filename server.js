@@ -6,21 +6,13 @@ var dynamoose = require('dynamoose');
 var morgan    = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var soap = require('soap');
 var routes = require('./routes.js')(app);
 
 dynamoose.AWS.config.update({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: AWS_SECRET_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       region: 'us-east-1'
-});
-
-var Message = dynamoose.model('Message', {id: Number, body: String});
-
-var sampleMessage = new Message({id: 1011, body: "First Message"});
-sampleMessage.save();
-Message.get(1011)
-    .then(function (test) {
-        console.log("First Message: " + sampleMessage.body);    
 });
 
 //config dom assets
@@ -40,6 +32,42 @@ app.use(methodOverride());
 
 AWS.config.region = "us-east-1";
 
+var xml = require('fs').readFileSync('./dashboardBackend.wsdl', 'utf8');
+
+var service = {
+    mService: {
+        mPort: {
+            mFunction: function(args) {
+               return {
+                  name: args.name
+               };
+            }    
+        },
+        
+            mAsyncFunc: function(args, callback) {
+            callback({
+                name: args.name
+            });
+        },
+
+        //receive incoming headers
+        HeadersAwareFunction: function(args, cb, headers) {
+            return {
+                name: headers.Token
+            };
+        }
+    }
+};
+
 //listen
 app.listen(process.env.PORT || 8080);
 console.log('App listening on port 8080');
+app.listen(8001, function () {
+    console.log("Soap Server Listening");
+    soap.listen(app, '/wsdl/', service, xml);
+});
+
+soap.log = function(type, data) {
+    console.log(type);
+    console.log(data);
+};

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://devops/dashboardBackend/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="dashboardBackend"
+                  targetNamespace="http://devops/dashboardBackend/">
+    <wsdl:documentation>
+        Service: Backend for the DevOps Dashboard Project. 
+        Describes messages that will be sent to the Dashboard by tools in
+        a DevOps toolchain.
+        Version: $Id: dashboardBackend.wsdl 95 2016-09-04 16:22:08Z nwilde $
+        Author: Norman Wilde
+    </wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema
+            targetNamespace="http://devops/dashboardBackend/">
+            <xsd:element name="recordEvent">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="componentName" type="xsd:string" />
+                        <xsd:element name="versionName" type="xsd:string" />
+                        <xsd:element name="stepName" type="xsd:string" />
+                        <xsd:element name="timeInMS" type="xsd:long" />
+                        <xsd:element name="stepResult" type="xsd:string" />
+                        <xsd:element name="notes" type="xsd:string" />
+                        <xsd:element name="apiKey" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="setupComponents">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="componentName" type="xsd:string"
+                                     maxOccurs="unbounded" minOccurs="1">
+                        </xsd:element>
+                        <xsd:element name="apiKey" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="setupSteps">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="stepName" type="xsd:string"
+                                     maxOccurs="unbounded" minOccurs="1">
+                        </xsd:element>
+                        <xsd:element name="apiKey" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="returnValue" type="xsd:string"/>
+            <xsd:element name="clearDB">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="apiKey" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+    
+    <wsdl:message name="recordEventRequest">
+        <wsdl:part element="tns:recordEvent" name="parameters" />
+    </wsdl:message>
+    <wsdl:message name="recordEventResponse">
+        <wsdl:part name="parameters" element="tns:returnValue" />
+    </wsdl:message>
+    <wsdl:message name="setupComponentsRequest">
+        <wsdl:part name="parameters" element="tns:setupComponents"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="setupComponentsResponse">
+        <wsdl:part name="parameters" element="tns:returnValue" />
+    </wsdl:message>
+    <wsdl:message name="setupStepsRequest">
+        <wsdl:part name="parameters" element="tns:setupSteps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="setupStepsResponse">
+        <wsdl:part name="parameters" element="tns:returnValue" />
+    </wsdl:message>
+    <wsdl:message name="clearDBRequest">
+        <wsdl:part name="parameters" element="tns:clearDB"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="clearDBResponse">
+        <wsdl:part name="parameters" element="tns:returnValue" />
+    </wsdl:message>
+    
+    <wsdl:portType name="dashboardBackend">
+        <wsdl:operation name="recordEvent">
+            <wsdl:input message="tns:recordEventRequest" />
+            <wsdl:output message="tns:recordEventResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="setupComponents">
+            <wsdl:input message="tns:setupComponentsRequest"></wsdl:input>
+            <wsdl:output message="tns:setupComponentsResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setupSteps">
+            <wsdl:input message="tns:setupStepsRequest"></wsdl:input>
+            <wsdl:output message="tns:setupStepsResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="clearDB">
+            <wsdl:input message="tns:clearDBRequest"></wsdl:input>
+            <wsdl:output message="tns:clearDBResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    
+    <wsdl:binding name="dashboardBackendSOAP"
+                  type="tns:dashboardBackend">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="recordEvent">
+            <soap:operation
+                soapAction="http://devops/dashboardBackend/recordEvent" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setupComponents">
+            <soap:operation
+                soapAction="http://devops/dashboardBackend/setupComponents" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setupSteps">
+            <soap:operation
+                soapAction="http://devops/dashboardBackend/setupSteps" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="clearDB">
+            <soap:operation
+                soapAction="http://devops/dashboardBackend/clearDB" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>  
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    
+    <wsdl:service name="dashboardBackend">
+        <wsdl:port binding="tns:dashboardBackendSOAP" name="dashboardBackendSOAP">
+            <soap:address location="http://www.example.org/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

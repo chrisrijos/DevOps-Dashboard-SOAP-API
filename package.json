@@ -14,6 +14,7 @@
     "express": "*",
     "jquery": "*",
     "aws-sdk": "*",
+    "soap": "*",
     "method-override": "*",
     "dynamoose": "*",
     "mongoose": "*",

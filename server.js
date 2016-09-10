@@ -8,20 +8,6 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var routes = require('./routes.js')(app);
 
-dynamoose.AWS.config.update({
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      region: 'us-east-1'
-});
-
-var Message = dynamoose.model('Message', {id: Number, body: String});
-
-var sampleMessage = new Message({id: 1011, body: "First Message"});
-sampleMessage.save();
-Message.get(1011)
-    .then(function (test) {
-        console.log("First Message: " + sampleMessage.body);
-});
 
 //config dom assets
 app.use(express.static(__dirname + '/public'));

@@ -15,6 +15,7 @@
     "jquery": "*",
     "aws-sdk": "*",
     "method-override": "*",
+    "dynamoose": "*",
     "mongoose": "*",
     "morgan": "*",
     "nodemon": "*",

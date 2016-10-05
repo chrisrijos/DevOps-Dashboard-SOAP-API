@@ -1,13 +1,15 @@
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
-var AWS = require('aws-sdk');
-var dynamoose = require('dynamoose');
-var morgan    = require('morgan');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var soap = require('soap');
-var routes = require('./routes.js')(app);
+var express = require('express'),
+ app = express(),
+ mongoose = require('mongoose'),
+ passport = require('passport'),
+ LocalStrategy = require('passport-local').Strategy;
+ AWS = require('aws-sdk'),
+ dynamoose = require('dynamoose'),
+ morgan    = require('morgan'),
+ bodyParser = require('body-parser'),
+ methodOverride = require('method-override'),
+ soap = require('soap'),
+ router = require('./routes/index.js');
 
 dynamoose.AWS.config.update({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -29,42 +31,33 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride());
+app.use(passport.initialize());
+app.use('/', router)
+
+//Passport Config
+var Account = require('./models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 AWS.config.region = "us-east-1";
 
 var xml = require('fs').readFileSync('./dashboardBackend.wsdl', 'utf8');
 
-var service = {
-    mService: {
-        mPort: {
-            mFunction: function(args) {
-               return {
-                  name: args.name
-               };
-            }    
-        },
-        
-            mAsyncFunc: function(args, callback) {
-            callback({
-                name: args.name
-            });
-        },
-
-        //receive incoming headers
-        HeadersAwareFunction: function(args, cb, headers) {
+var dashboardBackendService = {
+    dashboardBackend: {
+        recordEvent: function(args) {
             return {
-                name: headers.Token
+                greeting: "HELLO"
             };
         }
     }
-};
+}
 
 //listen
-app.listen(process.env.PORT || 8080);
-console.log('App listening on port 8080');
-app.listen(8001, function () {
-    console.log("Soap Server Listening");
-    soap.listen(app, '/wsdl/', service, xml);
+app.listen(5001, function () {
+    console.log("App listening on 5001");
+    soap.listen(app, '/wsdl/', dashboardBackendService, xml);
 });
 
 soap.log = function(type, data) {

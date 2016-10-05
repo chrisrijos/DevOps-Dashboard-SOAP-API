@@ -149,7 +149,7 @@
     
     <wsdl:service name="dashboardBackend">
         <wsdl:port binding="tns:dashboardBackendSOAP" name="dashboardBackendSOAP">
-            <soap:address location="http://www.example.org/" />
+            <soap:address location="http://localhost:8080/wsdl" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

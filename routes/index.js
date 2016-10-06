@@ -4,17 +4,15 @@ var express = require('express'),
     router = express.Router();
 
 router.get('/', function (req, res) {
-    console.log("/")
-    res.render('index.html', { user: req.user });
+    res.render('index.html');
 });
 
 router.get('/register', function (req, res) {
-    console.log("/register")
-    res.render('index', {}) 
+    res.render('register', {}); 
 });
 
 router.get('/login', function (req, res) {
-    //res.render('login', { user : req.user });
+    res.render('login', { user : req.user });
 });
 
 router.get('/logout', function (req, res) {
@@ -23,7 +21,19 @@ router.get('/logout', function (req, res) {
 });
 
 router.get('/ping', function (req, res) {
-    res.status(200).send("PING!");
+    res.render('index.html');
+});
+
+router.post('/register', function (req, res) {
+	Account.register(new Account({ username : req.body.username }), req.body.password, function (err, account) {
+		if (err) {
+		    return res.render('register.html', { account : account });
+		}
+
+		passport.authenticate('local')(req, res, function () {
+		  	res.redirect('/');	
+		});
+	});
 });
 
 module.exports = router;

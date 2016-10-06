@@ -3,7 +3,7 @@
     .module('App', ["ui.router"])
     .config( function($stateProvider, $urlRouterProvider){
 
-      $urlRouterProvider.otherwise('/login'); //default state
+      $urlRouterProvider.otherwise('/home'); //default state
 
       //Sectional Routes
       $stateProvider

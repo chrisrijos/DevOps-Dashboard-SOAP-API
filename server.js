@@ -2,7 +2,8 @@ var express = require('express'),
  app = express(),
  mongoose = require('mongoose'),
  passport = require('passport'),
- LocalStrategy = require('passport-local').Strategy;
+ LocalStrategy = require('passport-local').Strategy,
+ path = require('path'),
  AWS = require('aws-sdk'),
  dynamoose = require('dynamoose'),
  morgan    = require('morgan'),
@@ -17,13 +18,7 @@ dynamoose.AWS.config.update({
       region: 'us-east-1'
 });
 
-//config dom assets
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/public/js'));
-app.use(express.static(__dirname + '/public/styles'));
-app.use(express.static(__dirname + '/node_modules/'));
-app.use(express.static(__dirname + '/public/img'));
-app.use(express.static(__dirname + '/public/partials'));
+app.use(express.static(__dirname + '/public/'));
 
 //middleware
 app.use(morgan('dev'));
@@ -32,7 +27,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride());
 app.use(passport.initialize());
-app.use('/', router)
+app.use('/', router);
+
+//view engine for server
+app.set('views', path.join(__dirname + '/views'));
+app.engine('html', require('consolidate').handlebars);
+app.set('view engine', 'html');
+
+//config dom assets
+//app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/public/js'));
+app.use(express.static(__dirname + '/public/styles'));
+app.use(express.static(__dirname + '/node_modules/'));
+app.use(express.static(__dirname + '/public/img'));
+app.use(express.static(__dirname + '/public/partials'));
 
 //Passport Config
 var Account = require('./models/account');

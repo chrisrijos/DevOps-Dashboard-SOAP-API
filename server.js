@@ -72,12 +72,6 @@ var dashboardBackendSOAP = {
 var url = "http://localhost:5001/wsdl";
 var args = {name: 'tns:dashboardBackend'}
 
-soap.createClient(url, function (err, client) {
-    console.log(client)
-    console.log(err)
-});
-
-
 
 //listen
 app.listen(process.env.Port || 5001, function () {

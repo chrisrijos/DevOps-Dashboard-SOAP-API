@@ -21,13 +21,5 @@
           url: '/sign_up',
           templateUrl: 'sign_up.html'
         })
-<<<<<<< HEAD
-=======
-        .state('login', {
-          url: '/login',
-          templateUrl: 'partials/login.html',
-          controller: 'LoginController'
-        })
->>>>>>> 57414ea53586d598b0f3b1e400601dbc211c4b79
     });
 })();

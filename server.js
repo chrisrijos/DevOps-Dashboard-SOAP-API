@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride());
-app.use(session({store: new DynamoDBStore({region: 'us-east-1', tableName: 'sessionTable', cleanupInterval: 100000}), secret: 'keyboard cat'}));
+app.use(session({store: new DynamoDBStore({region: 'us-east-1', tableName: 'MessageTable', cleanupInterval: 100000}), secret: 'keyboard cat'}));
 app.use(passport.initialize());
 app.use('/', router);
 

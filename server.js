@@ -45,7 +45,6 @@ app.use(express.static(__dirname + '/public/partials'));
 var Message = require('./models/Message');
 var dynamodb = new AWS.DynamoDB();
 
-
 dynamoose.AWS.config.update({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -54,7 +53,6 @@ dynamoose.AWS.config.update({
 
 var xml = require('fs').readFileSync('./dashboardBackend.wsdl', 'utf8');
 var m = new Message({
-  type: "",
   data: "",
 });
 
@@ -83,7 +81,7 @@ soap.createClient(url, function (err, client) {
 
 //listen
 app.listen(process.env.Port || 5001, function () {
-    console.log("App listening on 5001");
+    console.log("Dashboard Listening");
     soap.listen(app, '/wsdl/', dashboardBackendSOAP, xml);
 });
 

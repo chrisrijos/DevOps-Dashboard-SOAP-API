@@ -1,20 +1,25 @@
 (function() {
   angular
-    .module('App', ["ui.router"])
+    .module('App', ["ui.router", "firebase"])
     .config( function($stateProvider, $urlRouterProvider){
 
-      $urlRouterProvider.otherwise('/home'); //default state
+      $urlRouterProvider.otherwise('login'); //default state
 
       //Sectional Routes
       $stateProvider
         .state('home', {
           url: '/home',
-          templateUrl: 'partials/home.html'
+          templateUrl: 'partials/home.html',
+          controller: 'HomeController'
         })
-        .state('lineup', {
-          url: '/lineup',
-          templateUrl: 'partials/lineup.html'
-          //controller: 'LineupCtrl'
-        });
+        .state('login', {
+          url: '/login',
+          templateUrl: 'partials/login.html',
+          controller: 'LoginController'
+        })
+        .state('sign_up', {
+          url: '/sign_up',
+          templateUrl: 'sign_up.html'
+        })
     });
 })();

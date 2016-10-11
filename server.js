@@ -6,17 +6,14 @@ var express = require('express'),
  path = require('path'),
  AWS = require('aws-sdk'),
  dynamoose = require('dynamoose'),
+ connect = require('connect'),
+ DynamoDBStore = require('connect-dynamodb')({session: session});
+ firebase = require("firebase"),
  morgan    = require('morgan'),
  bodyParser = require('body-parser'),
  methodOverride = require('method-override'),
  soap = require('soap'),
  router = require('./routes/index.js');
-
-dynamoose.AWS.config.update({
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      region: 'us-east-1'
-});
 
 app.use(express.static(__dirname + '/public/'));
 
@@ -26,6 +23,7 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride());
+app.use(session({store: new DynamoDBStore({region: 'us-east-1', tableName: 'sessionTable', cleanupInterval: 100000}), secret: 'keyboard cat'}));
 app.use(passport.initialize());
 app.use('/', router);
 
@@ -43,21 +41,30 @@ app.use(express.static(__dirname + '/public/img'));
 app.use(express.static(__dirname + '/public/partials'));
 
 //Passport Config
-var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+var Message = require('./models/Message');
+var dynamodb = new AWS.DynamoDB();
 
-AWS.config.region = "us-east-1";
+dynamoose.AWS.config.update({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      region: 'us-east-1'
+});
 
 var xml = require('fs').readFileSync('./dashboardBackend.wsdl', 'utf8');
+var m = new Message({
+  type: "",
+  data: "",
+});
 
-var dashboardBackendService = {
-    dashboardBackend: {
-        recordEvent: function(args) {
-            return {
-                greeting: "HELLO"
-            };
+var dashboardBackendSOAP = {
+      dashboardBackendSOAP: {
+          clearDB: function(args) {
+              m["data"] = args
+              m.save(function (err) {
+                if(err) { return console.log(err); }
+                console.log("Saved")
+              });
+          console.log(args)
         }
     }
 }
@@ -65,10 +72,11 @@ var dashboardBackendService = {
 //listen
 app.listen(5001, function () {
     console.log("App listening on 5001");
-    soap.listen(app, '/wsdl/', dashboardBackendService, xml);
+    soap.listen(app, '/wsdl/', dashboardBackendSOAP, xml);
 });
 
 soap.log = function(type, data) {
+
     console.log(type);
     console.log(data);
 };

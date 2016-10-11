@@ -4,7 +4,7 @@
                   xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="dashboardBackend"
                   targetNamespace="http://devops/dashboardBackend/">
     <wsdl:documentation>
-        Service: Backend for the DevOps Dashboard Project. 
+        Service: Backend for the DevOps Dashboard Project.
         Describes messages that will be sent to the Dashboard by tools in
         a DevOps toolchain.
         Version: $Id: dashboardBackend.wsdl 95 2016-09-04 16:22:08Z nwilde $
@@ -56,7 +56,7 @@
             </xsd:element>
         </xsd:schema>
     </wsdl:types>
-    
+
     <wsdl:message name="recordEventRequest">
         <wsdl:part element="tns:recordEvent" name="parameters" />
     </wsdl:message>
@@ -81,7 +81,7 @@
     <wsdl:message name="clearDBResponse">
         <wsdl:part name="parameters" element="tns:returnValue" />
     </wsdl:message>
-    
+
     <wsdl:portType name="dashboardBackend">
         <wsdl:operation name="recordEvent">
             <wsdl:input message="tns:recordEventRequest" />
@@ -100,7 +100,7 @@
             <wsdl:output message="tns:clearDBResponse"></wsdl:output>
         </wsdl:operation>
     </wsdl:portType>
-    
+
     <wsdl:binding name="dashboardBackendSOAP"
                   type="tns:dashboardBackend">
         <soap:binding style="document"
@@ -140,16 +140,16 @@
                 soapAction="http://devops/dashboardBackend/clearDB" />
             <wsdl:input>
                 <soap:body use="literal" />
-            </wsdl:input>  
+            </wsdl:input>
             <wsdl:output>
                 <soap:body use="literal" />
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
-    
+
     <wsdl:service name="dashboardBackend">
         <wsdl:port binding="tns:dashboardBackendSOAP" name="dashboardBackendSOAP">
-            <soap:address location="http://localhost:8080/wsdl" />
+            <soap:address location="http://localhost:5001/wsdl" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

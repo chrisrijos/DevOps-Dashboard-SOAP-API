@@ -33,13 +33,10 @@
             }
         }
 
-<<<<<<< HEAD
         LoginController.signUp = function () {
           $location.path('/sign_up')
         }
-
-=======
->>>>>>> 57414ea53586d598b0f3b1e400601dbc211c4b79
+        
         LoginController.clickMe = function () {
             console.log("CLICKED");
         }

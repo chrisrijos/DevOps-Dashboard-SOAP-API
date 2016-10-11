@@ -15,6 +15,7 @@
     "bootstrap": "*",
     "consolidate": "*",
     "connect": "*",
+    "connect-dynamodb": "*",
     "dynamoose": "*",
     "firebase": "*",
     "ejs": "*",

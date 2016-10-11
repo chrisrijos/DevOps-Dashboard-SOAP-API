@@ -16,6 +16,7 @@
     "consolidate": "*",
     "connect": "*",
     "connect-dynamodb": "*",
+    "express-session": "*",
     "dynamoose": "*",
     "firebase": "*",
     "ejs": "*",

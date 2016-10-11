@@ -21,6 +21,7 @@ router.get('/teststorage', function (req, res) {
 
 router.get('/messages/show', function (req, res) {
     Message.scan().exec( function (err, messages) {
+      //send messages back to the res as json strings
         console.log(messages)
     });
 });

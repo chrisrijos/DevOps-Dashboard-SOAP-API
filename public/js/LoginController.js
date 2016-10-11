@@ -36,7 +36,7 @@
         LoginController.signUp = function () {
           $location.path('/sign_up')
         }
-        
+
         LoginController.clickMe = function () {
             console.log("CLICKED");
         }

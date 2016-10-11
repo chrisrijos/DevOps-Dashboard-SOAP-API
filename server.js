@@ -59,15 +59,6 @@ var dashboardBackendSOAP = {
         clearDB: function(args) {
           console.log(args)
         }
-        returnValue: function(args) {
-          console.log(args)
-        }
-        setupComponents: function(args) {
-          console.log(args)
-        }
-        setupSteps: function(args) {
-          console.log(args)
-        }
     }
 }
 

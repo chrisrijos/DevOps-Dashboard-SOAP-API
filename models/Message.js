@@ -8,6 +8,7 @@ dynamoose.AWS.config.update({
 });
 
 var Message = new Schema({
+    id: String,
     data: String
 });
 

@@ -14,7 +14,8 @@ var express = require('express'),
  bodyParser = require('body-parser'),
  methodOverride = require('method-override'),
  soap = require('soap'),
- router = require('./routes/index.js');
+ router = require('./routes/index.js'),
+ shortid = require('shortid');
 
 app.use(express.static(__dirname + '/public/'));
 
@@ -52,21 +53,13 @@ dynamoose.AWS.config.update({
 });
 
 var xml = require('fs').readFileSync('./dashboardBackend.wsdl', 'utf8');
-var m = new Message({
-  data: "",
-});
 
 var dashboardBackendSOAP = {
       dashboardBackendSOAP: {
-          clearDB: function(args) {
-              m["data"] = args
-              m.save(function (err) {
-                if(err) { return console.log(err); }
-                console.log("Saved")
-              });
+        clearDB: function(args) {
           console.log(args)
+        }
     }
-  }
 }
 
 

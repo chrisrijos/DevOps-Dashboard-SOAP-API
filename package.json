@@ -19,6 +19,7 @@
     "express-session": "*",
     "dynamoose": "*",
     "firebase": "*",
+    "shortid": "*",
     "ejs": "*",
     "express": "*",
     "font-awesome": "*",

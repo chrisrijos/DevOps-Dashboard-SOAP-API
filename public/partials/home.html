@@ -3,7 +3,9 @@
   <div class="row">
     <div class="container" style="width: 100%; background-color: black;">
       <ul>
-        <li>{{1 + 1}}</li>
+        <li ng-repeat="n in [0, 1, 2] track by $index">
+          {{n}}
+        </li>
       </ul>
   </div>
 </section>

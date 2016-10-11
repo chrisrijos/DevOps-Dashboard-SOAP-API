@@ -22,15 +22,11 @@
             LoginController.firebaseUser = null;
             LoginController.error = null;
 
-            if (email === "rijos.christopher@gmail.com") {
-              console.log("EMAIL PASSWORD NIL")
-            } else {
-              auth.$signInAnonymously().then( function(firebaseUser) {
+            auth.$signInAnonymously().then( function(firebaseUser) {
                   $location.path("/home")
               }).catch(function (error) {
                   LoginController.error = error;
               });
-            }
         }
 
         LoginController.signUp = function () {

@@ -81,7 +81,7 @@ soap.createClient(url, function (err, client) {
 
 
 //listen
-app.listen(5001, function () {
+app.listen(process.env.Port || 5001, function () {
     console.log("App listening on 5001");
     soap.listen(app, '/wsdl/', dashboardBackendSOAP, xml);
 });

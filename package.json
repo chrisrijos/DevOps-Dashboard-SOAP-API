@@ -14,6 +14,7 @@
     "body-parser": "*",
     "bootstrap": "*",
     "consolidate": "*",
+    "connect": *,
     "dynamoose": "*",
     "ejs": "*",
     "express": "*",

@@ -1,12 +1,15 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var passportLocalMongoose = require('passport-local-mongoose');
+var dynamoose = require('dynamoose');
+var Schema = dynamoose.Schema;
+
+dynamoose.AWS.config.update({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      region: 'us-east-1'
+});
 
 var Account = new Schema({
     username: String,
     password: String
 });
 
-Account.plugin(passportLocalMongoose);
-
-module.exports = mongoose.model('Account', Account);
+module.exports = dynamoose.model('Account', Account);

@@ -42,8 +42,23 @@
   <script src="/angular/angular.js"></script>
   <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/angularfire/dist/angularfire.min.js"></script>
+  <script src="/firebase/firebase.js"></script>
   <!-- Angular App -->
   <script src="/js/client.js"></script>
   <!-- Controllers -->
   <script src="/js/NavCtrl.js"></script>
+  <script src="/js/LoginController.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+        apiKey: "AIzaSyB-RMbCRrit1xN0hXWR08A7vjMHFzov2_0",
+            authDomain: "soaptracker.firebaseapp.com",
+                databaseURL: "https://soaptracker.firebaseio.com",
+                    storageBucket: "soaptracker.appspot.com",
+                        messagingSenderId: "365495253681"
+                            };
+  firebase.initializeApp(config);
+  </script>
 </html>

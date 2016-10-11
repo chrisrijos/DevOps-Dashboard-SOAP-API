@@ -1,9 +1,9 @@
 (function() {
   angular
-    .module('App', ["ui.router"])
+    .module('App', ["ui.router", "firebase"])
     .config( function($stateProvider, $urlRouterProvider){
 
-      $urlRouterProvider.otherwise('/home'); //default state
+      $urlRouterProvider.otherwise('login'); //default state
 
       //Sectional Routes
       $stateProvider
@@ -11,10 +11,10 @@
           url: '/home',
           templateUrl: 'partials/home.html'
         })
-        .state('lineup', {
-          url: '/lineup',
-          templateUrl: 'partials/lineup.html'
-          //controller: 'LineupCtrl'
-        });
+        .state('login', {
+          url: '/login',
+          templateUrl: 'partials/login.html',
+          controller: 'LoginController'
+        })
     });
 })();

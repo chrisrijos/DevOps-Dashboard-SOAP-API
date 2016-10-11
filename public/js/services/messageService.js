@@ -3,18 +3,18 @@
     .module('App')
     .service('MessageService', Service);
 
-    Service.$inject = ["$scope", "$http"];
+    Service.$inject = ["$http"];
 
-    function Service($scope, $http) {
-        function getMessages() {
-          $http({
-            method: 'GET',
-            url: '/messages/show'
-          }).then(function onSuccess(response) {
-              console.log(response)
-          }, function onError(response) {
-              console.log(response)
-          })
-        }
+    function Service($http) {
+        return {
+            getMessages: (function (res) {
+                return $http.get('/messages/show')
+                .then(function (res) {
+                    console.log("Coming from service")
+                    //return responses data ie. return res.data
+                });
+            })()
+        };
+        return getMessages;
     }
 })();

@@ -11,7 +11,7 @@
         HomeController.generateRandomLog = HomeController.generateRandomLog;
 
         $http.get('/messages/show').then(function (data) {
-            HomeController.data = data
+            HomeController.data = data["data"]
         });
 
         HomeController.generateRandomLog = function() {
@@ -19,6 +19,8 @@
                 console.log("New message should be generated");
             });
         }
+
+
         /*MessageService.getMessages().then(function (d) {
             HomeController.data = d
         });*/

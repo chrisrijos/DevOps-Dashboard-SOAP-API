@@ -8,7 +8,7 @@
     function Service($http) {
         return {
             getMessages: function () {
-              return $http.get('/messages/show');
+              return $http.get('https://afternoon-island-94311.herokuapp.com/messages/show');
             }
         };
     }

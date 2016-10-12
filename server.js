@@ -1,21 +1,21 @@
 var express = require('express'),
- app = express(),
- mongoose = require('mongoose'),
- passport = require('passport'),
- LocalStrategy = require('passport-local').Strategy,
- path = require('path'),
- AWS = require('aws-sdk'),
- dynamoose = require('dynamoose'),
- connect = require('connect'),
- session = require('express-session'),
- DynamoDBStore = require('connect-dynamodb')({session: session}),
- firebase = require("firebase"),
- morgan    = require('morgan'),
- bodyParser = require('body-parser'),
- methodOverride = require('method-override'),
- soap = require('soap'),
- router = require('./routes/index.js'),
- shortid = require('shortid');
+     app = express(),
+     mongoose = require('mongoose'),
+     passport = require('passport'),
+     LocalStrategy = require('passport-local').Strategy,
+     path = require('path'),
+     AWS = require('aws-sdk'),
+     dynamoose = require('dynamoose'),
+     connect = require('connect'),
+     session = require('express-session'),
+     DynamoDBStore = require('connect-dynamodb')({session: session}),
+     firebase = require("firebase"),
+     morgan    = require('morgan'),
+     bodyParser = require('body-parser'),
+     methodOverride = require('method-override'),
+     soap = require('soap'),
+     router = require('./routes/index.js'),
+     shortid = require('shortid');
 
 app.use(express.static(__dirname + '/public/'));
 
@@ -55,8 +55,9 @@ dynamoose.AWS.config.update({
 
 var xml = require('fs').readFileSync('./dashboardBackend.wsdl', 'utf8');
 
-var dashboardBackend = {
-      dashboardBackendSOAP: {
+var dashboardBackendSOAP = {
+      dashboardBackend: {
+          dashboardBackendSoap: {
         clearDB: function(args) {
           var m = new Message({
               id: shortid.generate(),
@@ -88,14 +89,16 @@ var dashboardBackend = {
           });
           m.save();
         }
+          }
     }
 }
 
+app.use(bodyParser.raw({type: function(){ return true; }, limit: '5mb'}));
 
 //listen
 app.listen(process.env.PORT || 5001, function () {
     console.log("Dashboard Listening");
-    soap.listen(app, '/wsdl/', dashboardBackend, xml);
+    soap.listen(app, '/wsdl/', dashboardBackendSOAP, xml);
 });
 
 soap.log = function(type, data) {

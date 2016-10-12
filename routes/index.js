@@ -15,8 +15,6 @@ router.get('/teststorage', function (req, res) {
       data: shortid.generate()
     });
     o.save();
-    res.sendStatus(200);
-    console.log("We made it...");
 });
 
 router.get('/messages/show', function (req, res) {

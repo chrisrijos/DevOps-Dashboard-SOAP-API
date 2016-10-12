@@ -19,7 +19,8 @@
         })
         .state('sign_up', {
           url: '/sign_up',
-          templateUrl: 'sign_up.html'
+          templateUrl: 'sign_up.html',
+          controller: 'SignupController'
         })
     });
 })();

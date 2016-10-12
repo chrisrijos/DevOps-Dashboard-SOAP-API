@@ -1,14 +1,16 @@
 (function() {
   angular
     .module('App')
-    .controller('HomeController', ["$scope", "$location", "MessageService"
+    .controller('HomeController', MainController);
 
-    function($scope, $location, MessageService) {
+    MainController.$inject = ["$scope", "$location", "MessageService"];
+
+    function MainController($scope, $location, MessageService) {
         var HomeController = this;
 
         MessageService.getMessages().then(function (d) {
             HomeController.data = d
         });
-    }]);
+    };
 
 })();

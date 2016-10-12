@@ -9,10 +9,6 @@ router.get('/', function (req, res) {
     res.render('index');
 });
 
-router.get('/wsdl', function (req, res) {
-    res.send("WSDL SERVED");
-});
-
 router.get('/teststorage', function (req, res) {
     var o = new Message({
       id: shortid.generate(),

@@ -95,7 +95,7 @@ var dashboardBackend = {
 //listen
 app.listen(process.env.PORT || 5001, function () {
     console.log("Dashboard Listening");
-    soap.listen(app, '/wsdl/', dashboardBackendSOAP, xml);
+    soap.listen(app, '/wsdl/', dashboardBackend, xml);
 });
 
 soap.log = function(type, data) {

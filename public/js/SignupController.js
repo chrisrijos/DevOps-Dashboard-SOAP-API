@@ -8,22 +8,18 @@
 
     function Controller($scope, $firebaseAuth, $location) {
         var SignupController = this;
-        var username = "";
+        var email = "";
         var password = "";
         var auth = $firebaseAuth();
 
-        SignupController.clickMe = SignupController.clickMe;
-        SignupController.signIn = SignupController.signIn;
+        SignupController.signUp = SignupController.signUp;
 
 
-        SignupController.signIn = function () {
-            SignupController.firebaseUser = null;
-            SignupController.error = null;
+        SignupController.signUp = function () {
 
-            auth.$signInAnonymously().then( function(firebaseUser) {
-
-            }).catch(function (error) {
-                SignupController.error = error;
+            auth.$createUserWithEmailAndPassword(SignupController.email, SignupController.password).catch(function(error) {
+              console.log(error);
+            
             });
         }
 

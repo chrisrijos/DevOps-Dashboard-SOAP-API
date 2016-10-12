@@ -7,14 +7,10 @@
 
     function Service($http) {
         return {
-            getMessages: (function (res) {
-                return $http.get('/messages/show')
-                .then(function (res) {
-                    console.log("Coming from service")
-                    //return responses data ie. return res.data
-                });
-            })()
+            getMessages: function () {
+              return $http.get('/messages/show');
+            }
         };
-        return getMessages;
+        return { getMessages }
     }
 })();

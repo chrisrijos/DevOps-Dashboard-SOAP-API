@@ -18,8 +18,7 @@
         SignupController.signUp = function () {
 
             auth.$createUserWithEmailAndPassword(SignupController.email, SignupController.password).catch(function(error) {
-              console.log(error);
-            
+                console.log(error);
             });
         }
 

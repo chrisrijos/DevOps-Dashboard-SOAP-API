@@ -11,7 +11,6 @@
               return $http.get('/messages/show');
             }
         };
-        return { getMessages }
     }
 
 })();

@@ -3,8 +3,6 @@
     .module('App')
     .service('MessageService', Service);
 
-    Service.$inject = ["$http"];
-
     function Service($http) {
         return {
             getMessages: function () {
@@ -13,4 +11,7 @@
         };
         return { getMessages }
     }
+
+    Service.$inject = ["$http"];
+    
 })();

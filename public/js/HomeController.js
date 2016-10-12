@@ -3,16 +3,22 @@
     .module('App')
     .controller('HomeController', MainController);
 
-    MainController.$inject = ["$scope", "$location", "$http"];
+    MainController.$inject = ["$scope", "$location", "$http", "$timeout"];
 
-    function MainController($scope, $location, $http) {
+    function MainController($scope, $location, $http, $timeout) {
         var HomeController = this;
 
         HomeController.generateRandomLog = HomeController.generateRandomLog;
 
-        $http.get('/messages/show').then(function (data) {
-            HomeController.data = data["data"]
-        });
+        HomeController.reload = function() {
+          $http.get('/messages/show').then(function (data) {
+              HomeController.data = data["data"]
+          });
+          $timeout(function() {
+              HomeController.reload();
+          }, 3000);
+        };
+        HomeController.reload();
 
         HomeController.generateRandomLog = function() {
             $http.get('/teststorage').then(function (data) {

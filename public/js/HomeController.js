@@ -3,14 +3,17 @@
     .module('App')
     .controller('HomeController', MainController);
 
-    MainController.$inject = ["$scope", "$location", "MessageService"];
+    MainController.$inject = ["$scope", "$location", "$http"];
 
-    function MainController($scope, $location, MessageService) {
+    function MainController($scope, $location, $http) {
         var HomeController = this;
 
-        MessageService.getMessages().then(function (d) {
-            HomeController.data = d
+        $http.get('/messages/show').then(function (data) {
+            HomeController.data = data
         });
+        /*MessageService.getMessages().then(function (d) {
+            HomeController.data = d
+        });*/
     };
 
 })();

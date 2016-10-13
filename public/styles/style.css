@@ -10,16 +10,25 @@ body {
     position: fixed;
 }
 
-.form-login {
+.form-control {
+  width: 100%;
+
+}
+
+.form-signin {
     background-color: #EDEDED;
     padding-top: 10px;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 15px;
-    border-color:#d2d2d2;
+    border-color:#252525;
     border-width: 5px;
     box-shadow:0 1px 0 #cfcfcf;
+}
+
+.form-signin-heading {
+  text-align: center;
 }
 
 h4 {

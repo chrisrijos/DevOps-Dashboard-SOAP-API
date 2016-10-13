@@ -1,16 +1,22 @@
 <section>
   <div ng-controller="LoginController as Login">
     <div class="container">
+      <div class="col-md-6">
       <form action="" method="" name="Login_Form" class="form-signin">
             <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
-            <input type="text" class="form-control" name="email" placeholder="email" ng-model="Login.email" required="" autofocus="" />
+            <br>
+            <input type="text" class="form-control" name="email" placeholder="Email" ng-model="Login.email" required="" autofocus="" />
+            <br>
             <input type="password" class="form-control" name="Password" placeholder="Password" ng-model="Login.password" required=""/>
-
-            <button class="btn btn-lg btn-primary btn-block" ng-click="Login.signIn()" name="Submit" value="Login" type="Submit">Login</button>
+            <br>
+            <button class="form-height btn btn-lg btn-primary btn-block" ng-click="Login.signIn()" name="Submit" value="Login" type="Submit">Login</button>
             <br>
             <a href="">Forgot Password? Click here</a>
-            <a href="">Dont have an account?</a>
+            <br><br>
+            <a href="">Dont have an account? Click here</a>
+            <br>
         </form>
+      </div>
       </div>
   </div>
 </section>

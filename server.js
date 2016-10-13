@@ -55,42 +55,35 @@ dynamoose.AWS.config.update({
 
 var xml = require('fs').readFileSync('./dashboardBackend.wsdl', 'utf8');
 
-var dashboardBackendSOAP = {
-      dashboardBackend: {
-          dashboardBackendSoap: {
-        clearDB: function(args) {
-          var m = new Message({
-              id: shortid.generate(),
-              data: String(args)
-          });
-          m.save();
-        },
-
-        setupSteps: function(args) {
-          var m = new Message({
-              id: shortid.generate(),
-              data: String(args)
-          });
-          m.save();
-        },
-
-        setupComponents: function(args) {
-          var m = new Message({
-              id: shortid.generate(),
-              data: String(args)
-          });
-          m.save();
-        },
-
-        recordEvent: function(args) {
-          var m = new Message({
-              id: shortid.generate(),
-              data: String(args)
-          });
-          m.save();
-        }
-          }
-    }
+var service = {
+      dashboardBackendSOAP: {
+        dashboardBackend: {
+            clearDB: function(args) {
+                console.log(args);
+            },
+            setupSteps: function(args) {
+              var m = new Message({
+                  id: shortid.generate(),
+                  data: String(args)
+              });
+              m.save();
+            },
+            setupComponents: function(args) {
+              var m = new Message({
+                  id: shortid.generate(),
+                  data: String(args)
+              });
+              m.save();
+            },
+            recordEvent: function(args) {
+              var m = new Message({
+                  id: shortid.generate(),
+                  data: String(args)
+              });
+              m.save();
+            }
+      }
+      }
 }
 
 app.use(bodyParser.raw({type: function(){ return true; }, limit: '5mb'}));
@@ -98,7 +91,7 @@ app.use(bodyParser.raw({type: function(){ return true; }, limit: '5mb'}));
 //listen
 app.listen(process.env.PORT || 5001, function () {
     console.log("Dashboard Listening");
-    soap.listen(app, '/wsdl/', dashboardBackendSOAP, xml);
+    soap.listen(app, '/wsdl/', service, xml);
 });
 
 soap.log = function(type, data) {

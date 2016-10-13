@@ -25,8 +25,6 @@
                 console.log("New message should be generated");
             });
         }
-
-
         /*MessageService.getMessages().then(function (d) {
             HomeController.data = d
         });*/

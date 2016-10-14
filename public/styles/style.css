@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 body {
-  background-color:#fff;
+  background-color:#707070;
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto,arial,sans-serif;
 
@@ -8,7 +8,7 @@ body {
 
 .container {
     padding: 25px;
-    position: fixed;
+
 }
 
 .form-control {
@@ -196,6 +196,27 @@ h4 {
   font-weight: bold;
   color: white;
   line-height: 140%;
+}
+
+.heading {
+  font-size: 14px;
+  color: #252525;
+  font-weight: 500;
+}
+
+.cent {
+  text-align: center;
+}
+
+.home {
+  background-color: #707070;
+}
+
+hr {
+  color: white;
+  border-width: thin;
+  border-style: solid;
+  border-color: #252525;
 }
 
 

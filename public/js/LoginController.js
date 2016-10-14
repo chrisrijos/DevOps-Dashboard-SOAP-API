@@ -30,11 +30,15 @@
         }
 
         LoginController.signUp = function () {
-          $location.path('/sign_up')
+          $location.path('/sign_up');
         }
 
         LoginController.clickMe = function () {
             console.log("CLICKED");
+        }
+
+        LoginController.reDirect = function() {
+            $location.path("/sign_up");
         }
     }
 })();

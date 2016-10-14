@@ -3,6 +3,7 @@ body {
   background-color:#fff;
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto,arial,sans-serif;
+
 }
 
 .container {
@@ -15,12 +16,31 @@ body {
 
 }
 
+.message {
+  background-color: #EDEDED;
+  border-type: solid;
+  border-color: #252525;
+  border-radius: 10px;
+  color: lightgray;
+  margin: 5px;
+  color: black;
+}
+
 .form-signin {
     background-color: #EDEDED;
     padding-top: 10px;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    border-radius: 15px;
+    border-color:#252525;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+
+.form-signup {
+    background-color: #EDEDED;
+    padding: 95px;
     border-radius: 15px;
     border-color:#252525;
     border-width: 5px;
@@ -177,6 +197,7 @@ h4 {
   color: white;
   line-height: 140%;
 }
+
 
 @media (max-width:767px) {
 #wrapper {

@@ -7,24 +7,21 @@
 
     function MainController($scope, $location, $http, $timeout) {
         var HomeController = this;
+        HomeController.components = []
 
-        HomeController.generateRandomLog = HomeController.generateRandomLog;
+        HomeController.components = HomeController.components;
 
         HomeController.reload = function() {
-          $http.get('/SoftwareComponents/show').then(function (data) {
-              HomeController.data = data["data"]
+          $http.get('/SoftwareComponents/showall').then(function (data) {
+              HomeController.data = data["data"];
+
+              HomeController.data.forEach(function (obj) {
+                  HomeController.components.push(obj);
+              });
+              console.log(HomeController.components);
           });
-          $timeout(function() {
-              HomeController.reload();
-          }, 3000);
         };
         HomeController.reload();
-
-        HomeController.generateRandomLog = function() {
-            $http.get('/teststorage').then(function (data) {
-                console.log("New SoftwareComponent should be generated");
-            });
-        }
         /*SoftwareComponentService.getSoftwareComponents().then(function (d) {
             HomeController.data = d
         });*/

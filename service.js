@@ -1,6 +1,7 @@
 var SoftwareComponent = require('./models/SoftwareComponent'),
- AWS = require('aws-sdk'),
- dynamodb = new AWS.DynamoDB();
+   AWS = require('aws-sdk'),
+   shortid = require('shortid'),
+   dynamodb = new AWS.DynamoDB();
 
 var service = {
       dashboardBackend: {
@@ -16,25 +17,25 @@ var service = {
                       name: args.name
                   };
               },
-              setupComponents: function(args) {
-                  if (args["componentName"] &&  args["apiKey"] !== null){
-                      var data = {
-                        componentName: args["componentName"],
-                        apiKey: args["apiKey"]
+              setupComponents: function (args) {
+                  if (args["componentName"] && args["apiKey"] !== null) {
+                      var apiKey = args["apiKey"];
+                      var arr = args["componentName"];
+                      var payload = {
+                          versionName: args["versionName"],
+                          notes: args["notes"],
+                          stepName: args["stepName"],
+                          timeInMS: args["timeInMS"],
+                          stepResults: args["stepResult"],
+                          notes: args["notes"]
                       }
-                      for (i = 0; i < data["componentName"].length; i++) {
-                        var o = new SoftwareComponent({
-                            id: shortid.generate(),
-                            componentName: data["componentName"][i],
-                            versionName:  "",
-                            stepName: "",
-                            timeInMS: "",
-                            stepResult: "",
-                            notes: "",
-                            apiKey: data['apiKey']
+                      arr.forEach(function (item) {
+                          console.log(item);
+                          saveComponent(item, payload, apiKey);
                       });
-
-                    }
+                      return {
+                          name: args.name
+                      };
                   } else {
                       console.log("NULL FOUND");
                   }
@@ -53,5 +54,22 @@ var service = {
           }
       }
 }
+
+function saveComponent(args, payload, apiKey) {
+    var o = new SoftwareComponent({
+      _id: shortid.generate(),
+      componentName: args,
+      versionName: (typeof payload["versionName"] !== 'undefined') ? payload["versionName"] : "default",
+      stepName: (typeof payload["stepName"] !== 'undefined') ? payload["stepName"] : "default",
+      timeInMS: (typeof payload["timeInMS"] !== 'undefined') ? payload["timeInMS"] : "default",
+      stepResult: (typeof payload["stepResult"] !== 'undefined') ? payload["stepResult"] : "default",
+      notes: (typeof payload["notes"] !== 'undefined') ? payload["notes"] : "default",
+      apiKey: apiKey
+    });
+    //console.log(o)
+    o.save();
+}
+
+
 
 module.exports = service;

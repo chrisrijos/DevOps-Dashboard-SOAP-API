@@ -1,7 +1,8 @@
 <section id="login">
   <div class="container" ng-controller="SignupController as SignupCtrl">
-            <h1>Registration Form</h1>
-              <form name="signUpform" class="form-signup" role="form">
+            <h1 style="text-align: center; color: #EDEDED;">Registration Form</h1>
+            <br>
+              <form name="signUpform" id="signUpform" class="form-signup" role="form">
                 <h3>Please enter your information</h3>
                 <br>
                 <br>
@@ -19,7 +20,7 @@
                   </div>
                   <br>
                   <div class="form-group">
-                          <button id="signUpform" type="submit" class="btn btn-primary btn-block" ng-click="SignupCtrl.signUp()">Register</button>
+                          <button type="submit" class="btn btn-primary btn-block" ng-click="SignupCtrl.signUp()">Register</button>
                   </div>
               </form> <!-- /form -->
         </div>

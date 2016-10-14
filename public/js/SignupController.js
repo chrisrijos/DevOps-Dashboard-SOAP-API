@@ -10,6 +10,7 @@
         var SignupController = this;
         var email = "";
         var password = "";
+        var password2 = "";
         var auth = $firebaseAuth();
 
         SignupController.signUp = SignupController.signUp;
@@ -25,8 +26,18 @@
 
         }
 
-        SignupController.clickMe = function () {
-            console.log("CLICKED");
+        SignupController.valid = function () {
+
+            var valid = false;
+
+            if(SignupController.password === SignupController.password2) {
+              SignupController.valid = true;
+            }
+            else {
+              SignupController.valid = false;
+            }
+
         }
+
     }
 })();

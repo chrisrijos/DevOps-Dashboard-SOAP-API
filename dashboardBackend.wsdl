@@ -149,7 +149,7 @@
 
     <wsdl:service name="dashboardBackend">
         <wsdl:port binding="tns:dashboardBackendSOAP" name="dashboardBackendSOAP">
-            <soap:address location="http://soapmessagetracker-dev.us-east-1.elasticbeanstalk.com/wsdl" />
+            <soap:address location="http://localhost:8080/dashboardBackend?wsdl" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

@@ -1,12 +1,11 @@
 <section ng-controller="HomeController as Home">
   <h1 style="text-align: center;">Message Logs</h1>
-  <div class="row">
-    <div class="container" style="width: 100%; overflow-y: scroll; color: white; background-color: black;">
-      <ul>
-        <div ng-repeat="(key, value) in Home.data track by $index">
-          <li>{{key}} : {{value}}</li>
+    <div class="container">
+        <div class="col-md-3 message" ng-repeat="(key, value) in Home.data track by $index">
+            <h3>Key : {{key}}</h3>
+            <h5>Value: {{value}}</h5>
+            <br>
         </div>
-      </ul>
-    <button class="btn-primary" ng-click="Home.generateRandomLog()">Generate Log</button>
-  </div>
+          <button class="btn-primary" ng-click="Home.generateRandomLog()">Generate Log</button>
+      </div>
 </section>

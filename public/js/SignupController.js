@@ -17,9 +17,12 @@
 
         SignupController.signUp = function () {
 
-            auth.$createUserWithEmailAndPassword(SignupController.email, SignupController.password).catch(function(error) {
+            auth.$createUserWithEmailAndPassword(SignupController.email, SignupController.password).then( function() {
+                  $location.path("/home")
+              }).catch(function(error) {
                 console.log(error);
             });
+
         }
 
         SignupController.clickMe = function () {

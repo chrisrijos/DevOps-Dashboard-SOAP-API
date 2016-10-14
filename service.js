@@ -17,10 +17,27 @@ var service = {
                   };
               },
               setupComponents: function(args) {
-                  console.log(args);
-                  return {
-                      name: args.name
-                  };
+                  if (args["componentName"] &&  args["apiKey"] !== null){
+                      var data = {
+                        componentName: args["componentName"],
+                        apiKey: args["apiKey"]
+                      }
+                      for (i = 0; i < data["componentName"].length; i++) {
+                        var o = new SoftwareComponent({
+                            id: shortid.generate(),
+                            componentName: data["componentName"][i],
+                            versionName:  "",
+                            stepName: "",
+                            timeInMS: "",
+                            stepResult: "",
+                            notes: "",
+                            apiKey: data['apiKey']
+                      });
+
+                    }
+                  } else {
+                      console.log("NULL FOUND");
+                  }
               },
               recordEvent: function(args) {
                   console.log(args);
@@ -33,13 +50,6 @@ var service = {
                       name: headers.Token
                   };
               },
-
-              checkRequest: function(args, cb, headers, req) {
-                  console.log("Soap request");
-                  return {
-                      name: headers.Token
-                  };
-              }
           }
       }
 }

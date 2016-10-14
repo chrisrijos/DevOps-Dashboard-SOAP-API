@@ -1,3 +1,7 @@
+var SoftwareComponent = require('./models/SoftwareComponent'),
+ AWS = require('aws-sdk'),
+ dynamodb = new AWS.DynamoDB();
+
 var service = {
       dashboardBackend: {
         dashboardBackendSOAP: {

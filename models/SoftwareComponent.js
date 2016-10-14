@@ -7,9 +7,13 @@ dynamoose.AWS.config.update({
       region: 'us-east-1'
 });
 
-var Message = new Schema({
+var SoftwareComponent = new Schema({
     id: String,
-    data: String
+    data: String,
+    timeInMS: String,
+    stepResult: String,
+    notes: String,
+    apiKey: String
 });
 
-module.exports = dynamoose.model('Message', Message);
+module.exports = dynamoose.model('SoftwareComponent', SoftwareComponent);

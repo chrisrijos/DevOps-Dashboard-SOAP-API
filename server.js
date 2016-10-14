@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride());
-app.use(session({store: new DynamoDBStore({region: 'us-east-1', tableName: 'MessageTable', cleanupInterval: 100000}), secret: 'keyboard cat'}));
+app.use(session({store: new DynamoDBStore({region: 'us-east-1', tableName: 'SoftwareComponentTable', cleanupInterval: 100000}), secret: 'keyboard cat'}));
 app.use(passport.initialize());
 app.use('/', router);
 
@@ -43,7 +43,7 @@ app.use(express.static(__dirname + '/public/img'));
 app.use(express.static(__dirname + '/public/partials'));
 
 //Passport Config
-var Message = require('./models/Message');
+var SoftwareComponent = require('./models/SoftwareComponent');
 var dynamodb = new AWS.DynamoDB();
 
 

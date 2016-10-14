@@ -11,7 +11,7 @@
         HomeController.generateRandomLog = HomeController.generateRandomLog;
 
         HomeController.reload = function() {
-          $http.get('/messages/show').then(function (data) {
+          $http.get('/SoftwareComponents/show').then(function (data) {
               HomeController.data = data["data"]
           });
           $timeout(function() {
@@ -22,10 +22,10 @@
 
         HomeController.generateRandomLog = function() {
             $http.get('/teststorage').then(function (data) {
-                console.log("New message should be generated");
+                console.log("New SoftwareComponent should be generated");
             });
         }
-        /*MessageService.getMessages().then(function (d) {
+        /*SoftwareComponentService.getSoftwareComponents().then(function (d) {
             HomeController.data = d
         });*/
     };

@@ -55,47 +55,75 @@ dynamoose.AWS.config.update({
 
 var xml = require('fs').readFileSync('./dashboardBackend.wsdl', 'utf8');
 
+var p = 0;
+
 var service = {
-      dashboardBackendSOAP: {
-        dashboardBackend: {
-            clearDB: function(args) {
-                console.log(args);
-            },
-            setupSteps: function(args) {
-              var m = new Message({
-                  id: shortid.generate(),
-                  data: String(args)
-              });
-              m.save();
-            },
-            setupComponents: function(args) {
-              var m = new Message({
-                  id: shortid.generate(),
-                  data: String(args)
-              });
-              m.save();
-            },
-            recordEvent: function(args) {
-              var m = new Message({
-                  id: shortid.generate(),
-                  data: String(args)
-              });
-              m.save();
-            }
-      }
+      dashboardBackend: {
+        dashboardBackendSOAP: {
+              clearDB: function(args) {
+                  console.log(args.name);
+                  return {
+                      name: args.name
+                  };
+              },
+              setupSteps: function(args) {
+                  console.log("SETUP STEPS");
+                  return {
+                      name: args.name + "920801803810482"
+                  };
+              },
+              setupComponents: function(args) {
+                var m = new Message({
+                    id: shortid.generate(),
+                    data: String(args)
+                });
+                m.save();
+              },
+              recordEvent: function(args) {
+                var m = new Message({
+                    id: shortid.generate(),
+                    data: String(args)
+                });
+                m.save();
+              },
+              HeadersAwareFunction: function(args, cb, headers) {
+                  return {
+                      name: headers.Token
+                  };
+              },
+
+              checkRequest: function(args, cb, headers, req) {
+                  console.log("Soap request");
+                  return {
+                      name: headers.Token
+                  };
+              }
+          }
       }
 }
 
 app.use(bodyParser.raw({type: function(){ return true; }, limit: '5mb'}));
 
 //listen
-app.listen(process.env.PORT || 5001, function () {
+app.listen(process.env.PORT || 8080, function () {
     console.log("Dashboard Listening");
-    soap.listen(app, '/wsdl/', service, xml);
+    soap.listen(app,
+      { path: '/dashboardBackend/',
+        services: service,
+        xml: xml,
+
+        //wsdl options.
+        //envelopeKey: '<pre><b>soap</b>:Body></<b>THIS IS A MESSAGE</b>:Body></pre>',
+        attributesKey: 'theAttrs',
+        valueKey: 'theVal',
+        xmlKey: 'theXml'
+
+      });
+
+    soap.log = function(type, data) {
+        console.log(type);
+        console.log(data);
+    };
 });
 
-soap.log = function(type, data) {
-
-    console.log(type);
-    console.log(data);
-};
+var url = 'http://localhost:8080/dashboardBackend?wsdl';

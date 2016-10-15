@@ -2,8 +2,8 @@
 body {
   background-color:#707070;
   -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
-
+  font-style:normal;
+  font-family: "Arial Narrow", Arial, sans-serif;
 }
 
 .container {
@@ -18,12 +18,13 @@ body {
 
 .message {
   background-color: #EDEDED;
-  border-type: solid;
+  border-style: solid;
+  border-width: medium;
   border-color: #252525;
   border-radius: 10px;
-  color: lightgray;
-  margin: 5px;
   color: black;
+  margin: 10px;
+  opacity: .9;
 }
 
 .form-signin {
@@ -201,11 +202,13 @@ h4 {
 .heading {
   font-size: 14px;
   color: #252525;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .cent {
   text-align: center;
+  font-size: 16px;
+  font-weight:600;
 }
 
 .home {

@@ -1,5 +1,5 @@
 <section class="home" ng-controller="HomeController as Home">
-  <h1 style="text-align: center; color: #EDEDED;">Message Logs</h1>
+  <h1 style="text-align: center; color: #EDEDED;">Components</h1>
     <div class="container">
         <div class="col-md-3 message" ng-repeat="obj in Home.components track by $index">
             <h3 class="page-header cent">Name : {{obj["componentName"]}}</h3>
@@ -18,5 +18,4 @@
             <hr>-->
         </div>
       </div>
-    <button class="btn-primary" ng-click="Home.generateRandomLog()">Generate Log</button>
 </section>

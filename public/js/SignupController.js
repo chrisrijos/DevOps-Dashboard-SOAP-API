@@ -18,25 +18,16 @@
 
         SignupController.signUp = function () {
 
+            if(SignupController.password === SignupController.password2) {
             auth.$createUserWithEmailAndPassword(SignupController.email, SignupController.password).then( function() {
                   $location.path("/home")
               }).catch(function(error) {
                 console.log(error);
             });
-
-        }
-
-        SignupController.valid = function () {
-
-            var valid = false;
-
-            if(SignupController.password === SignupController.password2) {
-              SignupController.valid = true;
-            }
-            else {
-              SignupController.valid = false;
-            }
-
+          }
+          else if(SignupController.password !== SignupController.password2) {
+            alert("Your passwords do not match. Please retry your passwords.");
+          }
         }
 
     }

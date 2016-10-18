@@ -1,21 +1,31 @@
 <section class="home" ng-controller="HomeController as Home">
   <h1 style="text-align: center; color: #EDEDED;">Components</h1>
     <div class="container">
-        <div class="col-md-3 message" ng-repeat="obj in Home.components track by $index">
-            <h3 class="page-header cent">Name : {{obj["componentName"]}}</h3>
-            <!--<hr>
-            <h5 class="heading">componentName: {{componentName}}</h5>
-            <br>
-            <h5 class="heading">stepName: {{stepName}}</h5>
-            <br>
-            <h5 class="heading">timeInMS: {{timeInMS}}</h5>
-            <br>
-            <h5 class="heading">stepResult: {{stepResult}}</h5>
-            <br>
-            <h5 class="heading">notes: {{notes}}</h5>
-            <br>
-            <h5 class="heading">apiKey: {{apiKey}}</h5>
-            <hr>-->
+        <div class="col-md-2 message" ng-repeat="obj in Home.components track by $index">
+            <h3 class="cent">{{obj["componentName"]}}</h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                  <h5 class="heading"><strong><u>stepName</strong></u>: {{obj["stepName"]}}</h5>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="heading"><strong><u>timeInMS</strong></u>: {{obj["timeInMS"]}}<h5>
+                </div>
+              </div>
+            <div class="row">
+               <div class="col-md-6">
+                 <h5 class="heading"><strong><u>stepResult</strong></u>: {{obj["stepResult"]}}</h5>
+               </div>
+               <div class="col-md-6">
+                 <h5 class="heading"><strong><u>notes</strong></u>: {{obj["notes"]}}</h5>
+               </div>
+           </div>
+           <div class="row">
+              <div class="col-md-12">
+                <h5 class="heading"><strong><u>apiKey</strong></u>: {{obj["apiKey"]}}</h5>
+              </div>
+           </div>
+            <hr>
         </div>
       </div>
 </section>

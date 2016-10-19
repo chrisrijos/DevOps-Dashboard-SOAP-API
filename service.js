@@ -12,27 +12,17 @@ var service = {
                   }
               },
               setupSteps: function(args) {
-                  console.log(args);
+                  //console.log(args);
                   return {
                       name: args.name
                   };
               },
               setupComponents: function (args) {
-                  if (args["componentName"] && args["apiKey"] !== null) {
+                  //console.log(args);
+                  if (args["componentName"] && args.hasOwnProperty('apiKey')) {
                       var apiKey = args["apiKey"];
                       var arr = args["componentName"];
-                      var payload = {
-                          versionName: args["versionName"],
-                          notes: args["notes"],
-                          stepName: args["stepName"],
-                          timeInMS: args["timeInMS"],
-                          stepResults: args["stepResult"],
-                          notes: args["notes"]
-                      }
-                      arr.forEach(function (item) {
-                          console.log(item);
-                          saveComponent(item, payload, apiKey);
-                      });
+
                       return {
                           name: args.name
                       };
@@ -41,7 +31,15 @@ var service = {
                   }
               },
               recordEvent: function(args) {
-                  console.log(args);
+                  var payload = {
+                      componentName: args["componentName"],
+                      versionName: args["versionName"],
+                      stepName: args["stepName"],
+                      timeInMS: args["timeInMS"],
+                      stepResults: args["stepResult"],
+                      notes: args["notes"]
+                  }
+                  saveComponent(payload);
                   return {
                       name: args.name
                   };
@@ -55,18 +53,17 @@ var service = {
       }
 }
 
-function saveComponent(args, payload, apiKey) {
+function saveComponent(payload) {
     var o = new SoftwareComponent({
       _id: shortid.generate(),
-      componentName: args,
-      versionName: (typeof payload["versionName"] !== 'undefined') ? payload["versionName"] : "default",
-      stepName: (typeof payload["stepName"] !== 'undefined') ? payload["stepName"] : "default",
-      timeInMS: (typeof payload["timeInMS"] !== 'undefined') ? payload["timeInMS"] : "default",
-      stepResult: (typeof payload["stepResult"] !== 'undefined') ? payload["stepResult"] : "default",
-      notes: (typeof payload["notes"] !== 'undefined') ? payload["notes"] : "default",
-      apiKey: apiKey
+      componentName: payload["componentName"],
+      versionName: payload["versionName"],
+      stepName: payload["stepName"],
+      timeInMS: payload["timeInMS"],
+      stepResult: payload["stepResults"],
+      notes: payload["notes"]
     });
-    //console.log(o)
+    console.log(o)
     o.save();
 }
 

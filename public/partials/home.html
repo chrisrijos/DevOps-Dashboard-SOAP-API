@@ -5,18 +5,25 @@
             <h3 class="cent">{{obj["componentName"]}}</h3>
             <hr>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <h5 class="heading"><strong><u>stepName</strong></u>: {{obj["stepName"]}}</h5>
                 </div>
-                <div class="col-md-6">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                   <h5 class="heading"><strong><u>timeInMS</strong></u>: {{obj["timeInMS"]}}<h5>
                 </div>
-              </div>
+            </div>
             <div class="row">
-               <div class="col-md-6">
-                 <h5 class="heading"><strong><u>stepResult</strong></u>: {{obj["stepResult"]}}</h5>
+               <div class="col-md-12">
+                 <h5 class="heading"><strong><u>stepResult</strong></u>:</h5>
+                 <div class="doubt" ng-show="obj.stepResult == 'doubtful'">doubtful</div>
+                 <div class="good" ng-show="obj.stepResult == 'good'">good</div>
+                 <div class="fail" ng-show="obj.stepResult == 'fail'">fail</div>
                </div>
-               <div class="col-md-6">
+            </div>
+            <div class="row">
+               <div class="col-md-12">
                  <h5 class="heading"><strong><u>notes</strong></u>: {{obj["notes"]}}</h5>
                </div>
            </div>
@@ -25,7 +32,8 @@
                 <h5 class="heading"><strong><u>apiKey</strong></u>: {{obj["apiKey"]}}</h5>
               </div>
            </div>
-            <hr>
+          <hr>
+            <button type="button" class="btn btn-primary btn-block">More Details</button>
         </div>
       </div>
 </section>

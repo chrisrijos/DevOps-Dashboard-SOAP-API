@@ -23,8 +23,9 @@ body {
   border-color: #252525;
   border-radius: 10px;
   color: black;
-  margin: 10px;
-  opacity: .9;
+  margin: 7px;
+  width: 265px;
+  height: 380px;
 }
 
 .form-signin {
@@ -220,6 +221,18 @@ hr {
   border-width: thin;
   border-style: solid;
   border-color: #252525;
+}
+
+.doubt {
+  color: #E88E0D;
+}
+
+.good {
+  color: #2B7420;
+}
+
+.fail {
+  color: #B80000;
 }
 
 

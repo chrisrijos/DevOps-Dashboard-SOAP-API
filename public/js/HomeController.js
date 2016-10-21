@@ -22,7 +22,8 @@
         };
 
         HomeController.testClick = function() {
-            console.log("Dragged");
+            console.log("test");
+            $('#componentDetail').modal('show');
         }
 
         HomeController.reload();

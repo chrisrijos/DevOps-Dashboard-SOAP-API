@@ -1,17 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html ng-app="App">
   <head>
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="stylesheet" type="text/css" href='/font-awesome/css/font-awesome.min.css'>
-    <!-- jquery -->
-    <script src="/jquery/dist/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/jquery/dist/jquery.min.js"></script>
   <head>
   <body>
     <!-- Second navbar for categories -->
-
       <!--UIVIEW Rendering-->
       <div ui-view></div>
   </body>
@@ -22,7 +20,6 @@
   <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/angularfire/dist/angularfire.min.js"></script>
   <script src="/firebase/firebase.js"></script>
-  <script src="/angular-drag-scroll/src/ng-drag-scroll.js"></script>
   <!-- Angular App -->
   <script src="/js/client.js"></script>
   <!-- Controllers -->
@@ -42,10 +39,5 @@
             messagingSenderId: "365495253681"
         };
   firebase.initializeApp(config);
-
-  $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-      });
   </script>
 </html>

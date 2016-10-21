@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('App', ["ui.router", "firebase", "ng-drag-scroll"])
+    .module('App', ["ui.router", "firebase"])
     .config( function($stateProvider, $urlRouterProvider){
 
       $urlRouterProvider.otherwise('login'); //default state

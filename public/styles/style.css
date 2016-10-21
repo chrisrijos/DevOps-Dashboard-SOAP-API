@@ -7,6 +7,21 @@ html {
     overflow-x: hidden;
 }
 
+body.modal-open #wrap{
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+}
+
+.modal-backdrop {background: #f7f7f7;}
+
+.close {
+    font-size: 50px;
+    display:block;
+}
+
 .card{
   width: 25em;
   height:350px;
@@ -141,6 +156,7 @@ a {
 
 .main {
   padding: 20px;
+  height: 750px;
   background-color: #333F48;
 }
 @media (min-width: 768px) {

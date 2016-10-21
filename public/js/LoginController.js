@@ -18,6 +18,10 @@
         LoginController.email = LoginController.email;
         LoginController.password = LoginController.password;
 
+        LoginController.testClick = function() {
+            console.log("Test");
+        }
+
         LoginController.signIn = function () {
             LoginController.firebaseUser = null;
             LoginController.error = null;

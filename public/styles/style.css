@@ -168,3 +168,15 @@ a {
 .main .page-header {
   margin-top: 0;
 }
+
+.good {
+  color: green;
+}
+
+.doubt {
+  color: orange;
+}
+
+.fail {
+  color: red;s
+}

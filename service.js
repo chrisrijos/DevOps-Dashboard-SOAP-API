@@ -7,30 +7,34 @@ var service = {
       dashboardBackend: {
         dashboardBackendSOAP: {
               clearDB: function(args) {
+                  var params = {
+                      TableName : "SoftwareComponent"
+                  };
+                 /* dynamodb.deleteTable(params, function(err, data) {
+                      if (err) { console.log("Error delete table..", JSON.stringify(err, null, 2)); }
+                      else {
+                          console.log("Deleted table..");
+                          return {
+                              name: args.name
+                          }
+                      }
+                  });*/
                   return {
                       name: args.name
-                  }
+                  };
               },
               setupSteps: function(args) {
-                  //console.log(args);
                   return {
                       name: args.name
                   };
               },
               setupComponents: function (args) {
-                  //console.log(args);
-                  if (args["componentName"] && args.hasOwnProperty('apiKey')) {
-                      var apiKey = args["apiKey"];
-                      var arr = args["componentName"];
-
-                      return {
-                          name: args.name
-                      };
-                  } else {
-                      console.log("NULL FOUND");
-                  }
+                  return {
+                      name: args.name
+                  };
               },
               recordEvent: function(args) {
+                  console.log(args);
                   var payload = {
                       componentName: args["componentName"],
                       versionName: args["versionName"],

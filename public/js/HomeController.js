@@ -18,9 +18,13 @@
               HomeController.data.forEach(function (obj) {
                   HomeController.components.push(obj);
               });
-              console.log(HomeController.components);
           });
         };
+
+        HomeController.testClick = function() {
+            console.log("Dragged");
+        }
+
         HomeController.reload();
         /*SoftwareComponentService.getSoftwareComponents().then(function (d) {
             HomeController.data = d

@@ -51,10 +51,10 @@
                                                     </td>
                                                     <td>{{obj.timeInMS | date:'medium'}}</td>
                                                     <td class="text-center">
-                                                      <p class="build" ng-show="obj.stepName == 'build'">build</p>
-                                                      <p class="unit" ng-show="obj.stepName == 'unit test'">unit test</p>
-                                                      <p class="pack" ng-show="obj.stepName == 'packaging'">packaging</p>
-                                                      <p class="qual" ng-show="obj.stepName == 'quality assurance scans'">quality assurance scans</p>
+                                                      <p class="build" ng-show="obj.stepName == 'build'">{{ obj.stepName | uppercase}}</p>
+                                                      <p class="unit" ng-show="obj.stepName == 'unit test'">{{ obj.stepName | uppercase}}</p>
+                                                      <p class="pack" ng-show="obj.stepName == 'packaging'">{{ obj.stepName | uppercase}}</p>
+                                                      <p class="qual" ng-show="obj.stepName == 'quality assurance scans'">{{ obj.stepName | uppercase}}</p>
                                                     </td>
                                                     <td>
                                                       <p class="good" ng-show="obj.stepResult == 'good'">good</p>

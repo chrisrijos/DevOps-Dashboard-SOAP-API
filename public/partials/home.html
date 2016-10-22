@@ -1,4 +1,5 @@
 <section class="home" ng-controller="HomeController as Home">
+<<<<<<< HEAD
     <div class="container-fluid">
           <div class="row row-offcanvas row-offcanvas-left">
              <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
@@ -67,6 +68,95 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+=======
+    <!--<div class="tile" ng-repeat="obj in Home.components track by $index" >
+        <div class="tile__media">
+            <h6 id="tile_header" ng-bind="obj['componentName']"></h6>
+            <div class="col-md-4">
+                <p id="tile_data" ng-bind="obj['stepName']"></p>
+            </div>
+        </div>-->
+        <div class="container-fluid">
+
+              <div class="row row-offcanvas row-offcanvas-left">
+
+                 <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                    <ul class="nav nav-sidebar">
+                      <li class="active"><a href="#">Overview</a></li>
+                      <!--Only Allow if admin-->
+                      <li><a href="">Users</a></li>
+                    </ul>
+                    <h6>Filters</h6>
+                    <ul class="nav nav-sidebar">
+                      <li><a href="">Unit test</a></li>
+                      <li><a href="">Build</a></li>
+                      <li><a href="">Quality Assurance</a></li>
+                      <li><a href="">Packaging</a></li>
+                    </ul>
+                </div><!--/span-->
+
+                <div class="col-sm-9 col-md-10 main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="main-box no-header clearfix">
+                                    <div class="main-box-body clearfix">
+                                        <div class="table-responsive">
+                                            <table class="table component-list">
+                                                <thead>
+                                                    <tr>
+                                                    <th><span>Component Name</span></th>
+                                                    <th><span>Created</span></th>
+                                                    <th class="text-center"><span>Status</span></th>
+                                                    <th><span>Results</span></th>
+                                                    <th><span>Notes</span></th>
+                                                    <th>&nbsp;</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <form>
+                                                    <input class="searchbar" name="search" type="text" placeholder="  Search Component Name" ng-model="obj.componentName">
+                                                  </form>
+                                                    <tr ng-repeat="obj in Home.components | filter: obj.componentName track by $index">
+                                                        <td>
+                                                            <a href="#" class="user-link" ng-bind="obj['componentName']"></a>
+                                                            <span class="user-subhead" ng-bind="obj['versionName']"></span>
+                                                        </td>
+                                                        <td ng-bind="obj['timeInMS']"></td>
+                                                        <td class="text-center">
+                                                            <span class="label label-default" ng-bind="obj['stepName']"></span>
+                                                        </td>
+                                                        <td>
+                                                          <p class="good" ng-show="obj.stepResult == 'good'">good</p>
+                                                          <p class="doubt" ng-show="obj.stepResult == 'doubtful'">doubtful</p>
+                                                          <p class="fail" ng-show="obj.stepResult == 'fail'">fail</p>
+                                                        </td>
+                                                        <td style="width: 20%;">
+                                                            <a href="#" class="table-link">
+                                                                <span class="fa-stack">
+                                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                                </span>
+                                                            </a>
+                                                            <a href="#" class="table-link">
+                                                                <span class="fa-stack">
+                                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                                </span>
+                                                            </a>
+                                                            <a href="#" class="table-link danger">
+                                                                <span class="fa-stack">
+                                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                                </span>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+>>>>>>> 1d5ddc4a61210ad4bf54fa85040c6438cb956abf
                                     </div>
                                 </div>
                             </div>

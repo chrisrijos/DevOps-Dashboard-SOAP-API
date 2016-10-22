@@ -51,15 +51,15 @@
                                                     </td>
                                                     <td>{{obj.timeInMS | date:'medium'}}</td>
                                                     <td class="text-center">
-                                                      <p class="build" ng-show="obj.stepName == 'build'">{{ obj.stepName | uppercase}}</p>
-                                                      <p class="unit" ng-show="obj.stepName == 'unit test'">{{ obj.stepName | uppercase}}</p>
-                                                      <p class="pack" ng-show="obj.stepName == 'packaging'">{{ obj.stepName | uppercase}}</p>
-                                                      <p class="qual" ng-show="obj.stepName == 'quality assurance scans'">{{ obj.stepName | uppercase}}</p>
+                                                      <p class="label label-default" ng-show="obj.stepName == 'build'">{{ obj.stepName | uppercase}}</p>
+                                                      <p class="label label-info" ng-show="obj.stepName == 'unit test'">{{ obj.stepName | uppercase}}</p>
+                                                      <p class="label label-primary" ng-show="obj.stepName == 'packaging'">{{ obj.stepName | uppercase}}</p>
+                                                      <p class="label label-warning" ng-show="obj.stepName == 'quality assurance scans'">{{ obj.stepName | uppercase}}</p>
                                                     </td>
                                                     <td>
-                                                      <p class="good" ng-show="obj.stepResult == 'good'">good</p>
-                                                      <p class="doubt" ng-show="obj.stepResult == 'doubtful'">doubtful</p>
-                                                      <p class="fail" ng-show="obj.stepResult == 'fail'">fail</p>
+                                                      <p class="label label-success" ng-show="obj.stepResult == 'good'">{{ obj.stepResult | uppercase}}</p>
+                                                      <p class="label label-warning" ng-show="obj.stepResult == 'doubtful'">{{ obj.stepResult | uppercase}}</p>
+                                                      <p class="label label-danger" ng-show="obj.stepResult == 'fail'">{{ obj.stepResult | uppercase}}</p>
                                                     </td>
                                                     <td style="width: 20%;">
                                                         <i ng-click="Home.testClick()" class="fa fa-search"></i>

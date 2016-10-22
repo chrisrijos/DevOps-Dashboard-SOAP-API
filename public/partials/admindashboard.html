@@ -1,13 +1,14 @@
-<section class="home" ng-controller="HomeController as Home">
+<section ng-controller="AdminDashboard as admin">
     <div class="container-fluid">
           <div class="row row-offcanvas row-offcanvas-left">
              <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
                 <ul class="nav nav-sidebar">
-                  <li class="active"><a href="#">Overview</a></li>
+                  <li class="active"><a ng-click="admin.navigateToOverview()">Overview</a></li>
                   <!--Only Allow if admin-->
-                  <li><a ng-click="Home.navigateToDashboard()">Users</a></li>
+                  <li><a ng-click="">Users</a></li>
                 </ul>
                 <h6>Filters</h6>
+
                 <ul class="nav nav-sidebar">
                   <li><a>Unit test</a></li>
                   <li><a href="">Build</a></li>
@@ -15,7 +16,6 @@
                   <li><a href="">Packaging</a></li>
                 </ul>
             </div><!--/span-->
-
             <div class="col-sm-9 col-md-10 main">
                 <div class="container">
                     <div class="row">
@@ -26,8 +26,8 @@
                                         <table class="table component-list">
                                             <thead>
                                                 <tr>
-                                                <th><span>Component Name</span></th>
-                                                <th><span>Created</span></th>
+                                                <th><span>User name</span></th>
+                                                <th><span>Email</span></th>
                                                 <th class="text-center"><span>Status</span></th>
                                                 <th><span>Results</span></th>
                                                 <th><span>Notes</span></th>
@@ -48,7 +48,7 @@
                                                         <span class="label label-default" ng-bind="obj['stepResult']"></span>
                                                     </td>
                                                     <td style="width: 20%;">
-                                                        <i ng-click="Home.testClick()" class="fa fa-search"></i>
+                                                        <i ng-click="" class="fa fa-search"></i>
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="componentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                           <div class="container">

@@ -10,7 +10,7 @@ var service = {
                   var params = {
                       TableName : "SoftwareComponent"
                   };
-                 /* dynamodb.deleteTable(params, function(err, data) {
+                 /*dynamodb.deleteTable(params, function(err, data) {
                       if (err) { console.log("Error delete table..", JSON.stringify(err, null, 2)); }
                       else {
                           console.log("Deleted table..");

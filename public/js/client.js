@@ -22,5 +22,10 @@
           templateUrl: 'sign_up.html',
           controller: 'SignupController'
         })
+        .state('admindashboard', {
+          url: '/admindashboard',
+          templateUrl: 'admindashboard.html',
+          controller: 'AdminDashboard'
+        })
     });
 })();

@@ -21,15 +21,16 @@
           });
         };
 
+        HomeController.reload();
+
         HomeController.testClick = function() {
             console.log("test");
             $('#componentDetail').modal('show');
         }
 
-        HomeController.reload();
-        /*SoftwareComponentService.getSoftwareComponents().then(function (d) {
-            HomeController.data = d
-        });*/
+        HomeController.navigateToDashboard = function() {
+            $location.path('/admindashboard');
+        }
     };
 
 })();

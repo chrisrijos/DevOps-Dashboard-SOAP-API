@@ -45,7 +45,10 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="obj in Home.components track by $index">
+                                                  <form>
+                                                    <input class="searchbar" name="search" type="text" placeholder="  Search Component Name" ng-model="obj.componentName">
+                                                  </form>
+                                                    <tr ng-repeat="obj in Home.components | filter: obj.componentName track by $index">
                                                         <td>
                                                             <a href="#" class="user-link" ng-bind="obj['componentName']"></a>
                                                             <span class="user-subhead" ng-bind="obj['versionName']"></span>

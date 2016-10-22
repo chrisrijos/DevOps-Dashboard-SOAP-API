@@ -180,3 +180,13 @@ a {
 .fail {
   color: red;s
 }
+
+.searchbar {
+  width: 40%;
+  height: 20%;
+  margin-left: 40px;
+  box-sizing: border-box;
+  border: 2px olid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}

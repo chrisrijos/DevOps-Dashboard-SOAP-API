@@ -34,9 +34,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <form>
-                                                  <input class="searchbar" name="search" type="text" placeholder="  Search Component Name" ng-model="obj.componentName">
-                                                </form>
+                                                <div id="custom-search-input">
+                                                    <div class="input-group col-md-12">
+                                                        <input type="text" class="form-control input-lg" placeholder="Search...." ng-model="obj.componentName"/>
+                                                        <span class="input-group-btn">
+                                                           <button class="btn btn-info btn-lg" type="button">
+                                                               <i class="glyphicon glyphicon-search"></i>
+                                                           </button>
+                                                        </span>
+                                                    </div>
+                                                 </div>
                                                   <tr ng-repeat="obj in Home.components | filter: obj.componentName track by $index">
                                                     <td>
                                                         <a href="#" class="user-link" ng-bind="obj['componentName']"></a>

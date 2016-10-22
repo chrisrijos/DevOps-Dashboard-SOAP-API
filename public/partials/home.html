@@ -44,10 +44,15 @@
                                                     </td>
                                                     <td>{{obj.timeInMS | date:'medium'}}</td>
                                                     <td class="text-center">
-                                                        <span class="label label-default" ng-bind="obj['stepName']"></span>
+                                                      <p class="build" ng-show="obj.stepName == 'build'">build</p>
+                                                      <p class="unit" ng-show="obj.stepName == 'unit test'">unit test</p>
+                                                      <p class="pack" ng-show="obj.stepName == 'packaging'">packaging</p>
+                                                      <p class="qual" ng-show="obj.stepName == 'quality assurance scans'">quality assurance scans</p>
                                                     </td>
                                                     <td>
-                                                        <span class="label label-default" ng-bind="obj['stepResult']"></span>
+                                                      <p class="good" ng-show="obj.stepResult == 'good'">good</p>
+                                                      <p class="doubt" ng-show="obj.stepResult == 'doubtful'">doubtful</p>
+                                                      <p class="fail" ng-show="obj.stepResult == 'fail'">fail</p>
                                                     </td>
                                                     <td style="width: 20%;">
                                                         <i ng-click="Home.testClick()" class="fa fa-search"></i>

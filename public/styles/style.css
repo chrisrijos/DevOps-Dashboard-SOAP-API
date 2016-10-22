@@ -177,8 +177,24 @@ a {
   color: orange;
 }
 
+.build {
+  color: #D90068;
+}
+
+.unit {
+  color: #8926A5;
+}
+
+.qual {
+  color: #30A9D9;
+}
+
+.pack {
+  color: #45D10E;
+}
+
 .fail {
-  color: red;s
+  color: red;
 }
 
 .searchbar {

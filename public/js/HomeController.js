@@ -13,6 +13,9 @@
         HomeController.build = false;
         HomeController.QA = false;
         HomeController.packaging = false;
+        HomeController.goDown = false;
+        HomeController.goUp = false;
+        HomeController.change = "";
 
         HomeController.components = HomeController.components;
         HomeController.activateFilter = activateFilter;
@@ -51,6 +54,39 @@
                     break
             }
         }
+
+
+           HomeController.column = '';
+           HomeController.reverse = false;
+
+           HomeController.sortColumn = function(col){
+
+             HomeController.column = col;
+
+                if(HomeController.reverse){
+                  HomeController.reverse = false;
+                  HomeController.reverseclass = 'arrow-up';
+                }
+                else {
+                  HomeController.reverse = true;
+                  HomeController.reverseclass = 'arrow-down';
+                }
+            };
+
+           HomeController.sortClass = function(col){
+             if(HomeController.column == col ){
+                if(HomeController.reverse){
+                    return 'arrow-down';
+                  }
+                  else{
+                    return 'arrow-up';
+                  }
+                }
+                  else{
+                    return '';
+                  }
+              }
+
 
         HomeController.navigateToDashboard = function() {
             $location.path('/admindashboard');

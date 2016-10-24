@@ -26,9 +26,9 @@
                                             <thead>
                                                 <tr>
                                                 <th><span>Component Name</span></th>
-                                                <th><span>Created</span></th>
-                                                <th class="text-center"><span>Status</span></th>
-                                                <th><span>Results</span></th>
+                                                <th><a ng-click='Home.sortColumn("timeInMs")' ng-class='Home.sortClass("timeInMs")'><span>Created</span></a></th>
+                                                <th class="text-center"><a ng-click='Home.sortColumn("stepName")' ng-class='Home.sortClass("stepName")'>Name</a></th>
+                                                <th><a ng-click='Home.sortColumn("stepResult")' ng-class='Home.sortClass("stepResult")'><span>Results</span></a></th>
                                                 <th><span>Notes</span></th>
                                                 <th>&nbsp;</th>
                                                 </tr>
@@ -44,7 +44,7 @@
                                                         </span>
                                                     </div>
                                                  </div>
-                                                  <tr ng-repeat="obj in Home.components | filter: obj.componentName track by $index">
+                                                  <tr ng-repeat="obj in Home.components | filter: obj.componentName | orderBy: Home.column:Home.reverse track by $index">
                                                     <td>
                                                         <a href="#" class="user-link" ng-bind="obj['componentName']"></a>
                                                         <span class="user-subhead" ng-bind="obj['versionName']"></span>

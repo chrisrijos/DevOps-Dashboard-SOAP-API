@@ -200,6 +200,35 @@ a {
   color: red;
 }
 
+table th:hover{
+ cursor: pointer;
+}
+
+.arrow-down:after,.arrow-up:after{
+ content: ' ';
+ position: relative;
+ left: 2px;
+ border: 8px solid transparent;
+}
+
+.arrow-down:after{
+ top: 10px;
+ border-top-color: black;
+}
+
+.arrow-up:after{
+ bottom: 15px;
+ border-bottom-color: black;
+}
+
+.arrow-down,.arrow-up{
+ padding-right: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+
 #custom-search-input{
     padding: 3px;
     border: solid 1px #E4E4E4;

@@ -28,8 +28,9 @@
                                                 <th><span>Component Name</span></th>
                                                 <th><a ng-click='Home.sortColumn("timeInMs")' ng-class='Home.sortClass("timeInMs")'><span>Created</span></a></th>
                                                 <th class="text-center"><a ng-click='Home.sortColumn("stepName")' ng-class='Home.sortClass("stepName")'>Name</a></th>
-                                                <th><a ng-click='Home.sortColumn("stepResult")' ng-class='Home.sortClass("stepResult")'><span>Results</span></a></th>
+                                                <th><a ng-click='Home.sortColumn("stepResult")' ng-class='Home.sortClass("stepResult")'><span>Result</span></a></th>
                                                 <th><span>Notes</span></th>
+                                                <th><a ng-click='obj.componentName = ""; Home.resetColumn();'><span>Clear Filters</span><i class="glyphicon glyphicon-remove"</i></a></th>
                                                 <th>&nbsp;</th>
                                                 </tr>
                                             </thead>

@@ -13,8 +13,6 @@
         HomeController.build = false;
         HomeController.QA = false;
         HomeController.packaging = false;
-        HomeController.goDown = false;
-        HomeController.goUp = false;
         HomeController.change = "";
 
         HomeController.components = HomeController.components;
@@ -58,6 +56,13 @@
 
            HomeController.column = '';
            HomeController.reverse = false;
+
+           HomeController.resetColumn = function(col) {
+             HomeController.column = col;
+                 if(HomeController.column == col) {
+                   HomeController.column = "";
+                 }
+           };
 
            HomeController.sortColumn = function(col){
 

@@ -73,6 +73,7 @@ body{
 }
 .main-box.no-header {
     padding-top: 20px;
+    width: 1000px;
 }
 .main-box {
     background: #FFFFFF;

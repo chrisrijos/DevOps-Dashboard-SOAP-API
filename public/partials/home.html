@@ -24,16 +24,18 @@
                                     <div class="table-responsive">
                                         <table class="table component-list">
                                             <thead>
+                                              <th><a ng-click='obj.componentName = ""; Home.resetColumn();'><span>Clear</span><i class="glyphicon glyphicon-remove"</i></a></th>
+                                              
                                                 <tr>
                                                 <th><span>Component Name</span></th>
                                                 <th><a ng-click='Home.sortColumn("timeInMs")' ng-class='Home.sortClass("timeInMs")'><span>Created</span></a></th>
                                                 <th class="text-center"><a ng-click='Home.sortColumn("stepName")' ng-class='Home.sortClass("stepName")'>Name</a></th>
                                                 <th><a ng-click='Home.sortColumn("stepResult")' ng-class='Home.sortClass("stepResult")'><span>Result</span></a></th>
-                                                <th><span>Notes</span></th>
-                                                <th><a ng-click='obj.componentName = ""; Home.resetColumn();'><span>Clear Filters</span><i class="glyphicon glyphicon-remove"</i></a></th>
+                                                <th class="right"><span>Notes</span></th>
                                                 <th>&nbsp;</th>
                                                 </tr>
                                             </thead>
+
                                             <tbody>
                                                 <div id="custom-search-input">
                                                     <div class="input-group col-md-12">
@@ -45,6 +47,7 @@
                                                         </span>
                                                     </div>
                                                  </div>
+
                                                   <tr ng-repeat="obj in Home.components | filter: obj.componentName | orderBy: Home.column:Home.reverse track by $index">
                                                     <td>
                                                         <a href="#" class="user-link" ng-bind="obj['componentName']"></a>
@@ -62,8 +65,8 @@
                                                       <p class="label label-warning" ng-show="obj.stepResult == 'doubtful'">{{ obj.stepResult | uppercase}}</p>
                                                       <p class="label label-danger" ng-show="obj.stepResult == 'fail'">{{ obj.stepResult | uppercase}}</p>
                                                     </td>
-                                                    <td style="width: 20%;">
-                                                        <i ng-click="Home.testClick()" class="fa fa-search"></i>
+                                                    <td>
+                                                        <i ng-click="Home.testClick()" class="fa fa-search right"></i>
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="componentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                           <div class="container">

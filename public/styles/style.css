@@ -73,7 +73,7 @@ body{
 }
 .main-box.no-header {
     padding-top: 20px;
-    width: 1000px;
+    width: 980px;
 }
 .main-box {
     background: #FFFFFF;
@@ -96,6 +96,11 @@ body{
     border-radius: 3px;
     font-size: 0.875em;
     font-weight: 600;
+}
+
+.right {
+  text-align: center;
+  padding-left: 23px;
 }
 
 .fa-search {

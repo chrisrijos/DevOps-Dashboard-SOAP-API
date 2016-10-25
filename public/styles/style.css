@@ -98,7 +98,9 @@ body{
     font-weight: 600;
 }
 
-
+.fa-search {
+  cursor: pointer;
+}
 
 .component-list tbody td .user-subhead {
     font-size: 0.875em;

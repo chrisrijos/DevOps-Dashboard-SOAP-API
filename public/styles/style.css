@@ -38,6 +38,24 @@ body.modal-open #wrap{
 
 }
 
+.usercard{
+  width: 65%;
+  height:500px;
+  background: #f5f5f5;
+  color: black;
+  float:left;
+  margin-right:10px;
+  margin-bottom:50px;
+  cursor:pointer;
+  transform: scale(1);
+  visibility:visible;
+  -moz-box-shadow: 0px 1px 5px 0px #676767;
+  -webkit-box-shadow: 0px 1px 5px 0px #676767;
+  box-shadow: 0px 1px 5px 0px #676767;
+  padding: 20px;
+
+}
+
 .card:hover{
   cursor:pointer;
   transform: scale(1);
@@ -51,6 +69,7 @@ body.modal-open #wrap{
 
 
 }
+
 
  .inside-top{
   width:100%;
@@ -151,14 +170,24 @@ a {
   margin-right: -15px;
   margin-bottom: 20px;
   margin-left: -15px;
+  cursor: pointer;
 }
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
 }
+
+.nav-sidebar > li > a:hover {
+  padding-right: 20px;
+  padding-left: 20px;
+  background: darkgray;
+  color: white;
+}
+
 .nav-sidebar > .active > a {
   color: #fff;
   background-color: #428bca;
+
 }
 
 /*
@@ -206,6 +235,12 @@ a {
 
 .fail {
   color: red;
+}
+
+.userbutton {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 table th:hover{

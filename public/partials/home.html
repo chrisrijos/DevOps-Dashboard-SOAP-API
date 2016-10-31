@@ -7,13 +7,6 @@
                   <!--Only Allow if admin-->
                   <li><a ng-click="Home.navigateToDashboard()">Users</a></li>
                 </ul>
-                <h6>Filters</h6>
-                <ul class="nav nav-sidebar">
-                  <li><a ng-click="Home.activateFilter('UnitTest')" >Unit test</a></li>
-                  <li><a ng-click="Home.activateFilter('Build')">Build</a></li>
-                  <li><a ng-click="Home.activateFilter('QA')">Quality Assurance</a></li>
-                  <li><a ng-click="Home.activateFilter('Packaging')">Packaging</a></li>
-                </ul>
             </div><!--/span-->
             <div class="col-sm-9 col-md-10 main">
                 <div class="container">
@@ -25,7 +18,7 @@
                                         <table class="table component-list">
                                             <thead>
                                               <th><a ng-click='obj.componentName = ""; Home.resetColumn();'><span>Clear</span><i class="glyphicon glyphicon-remove"</i></a></th>
-                                              
+
                                                 <tr>
                                                 <th><span>Component Name</span></th>
                                                 <th><a ng-click='Home.sortColumn("timeInMs")' ng-class='Home.sortClass("timeInMs")'><span>Created</span></a></th>

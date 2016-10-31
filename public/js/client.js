@@ -17,11 +17,6 @@
           templateUrl: 'partials/login.html',
           controller: 'LoginController'
         })
-        .state('sign_up', {
-          url: '/sign_up',
-          templateUrl: 'sign_up.html',
-          controller: 'SignupController'
-        })
         .state('admindashboard', {
           url: '/admindashboard',
           templateUrl: 'admindashboard.html',

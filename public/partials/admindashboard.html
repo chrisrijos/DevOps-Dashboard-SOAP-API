@@ -7,14 +7,6 @@
                   <!--Only Allow if admin-->
                   <li><a ng-click="">Users</a></li>
                 </ul>
-                <h6>Filters</h6>
-
-                <ul class="nav nav-sidebar">
-                  <li><a>Unit test</a></li>
-                  <li><a href="">Build</a></li>
-                  <li><a href="">Quality Assurance</a></li>
-                  <li><a href="">Packaging</a></li>
-                </ul>
             </div><!--/span-->
             <div class="col-sm-9 col-md-10 main">
                 <div class="container">
@@ -26,12 +18,13 @@
                                         <table class="table component-list">
                                             <thead>
                                                 <tr>
-                                                <th><span>User name</span></th>
-                                                <th><span>Email</span></th>
-                                                <th class="text-center"><span>Status</span></th>
-                                                <th><span>Results</span></th>
-                                                <th><span>Notes</span></th>
-                                                <th>&nbsp;</th>
+                                                <th class="text-center"><span>UID</span></th>
+                                                <th class="text-center"><span>User name</span></th>
+                                                <th class="text-center"><span>Email</span></th>
+                                                <th class="text-center"><span>Password</span></th>
+                                                <button class="btn btn-danger pull-right userbutton" ng-click="">Delete User</button>
+                                                <button class="btn btn-primary pull-right userbutton" ng-click="admin.userButton()">Create User</button>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -47,23 +40,40 @@
                                                     <td>
                                                         <span class="label label-default" ng-bind="obj['stepResult']"></span>
                                                     </td>
-                                                    <td style="width: 20%;">
-                                                        <i ng-click="" class="fa fa-search"></i>
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="componentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                          <div class="container">
-                                                            <div class="row">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
-                                                                <div class="card" style="margin-left:500px;">
-                                                                    <div class="inside-top">
-                                                                        <h3>Notes:</h3>
-                                                                        <p ng-bind="obj.notes"></p>
-                                                                    </div>
-                                                                </div>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="componentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                      <div class="container">
+                                                        <div class="row">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                                                            <div class="usercard" style="margin-left:250px;">
+                                                                    <form>
+                                                                      <form name="signUpform" id="signUpform" class="form-signup" role="form">
+                                                                        <h3>Please enter the users information</h3>
+                                                                        <hr>
+                                                                        <br>
+                                                                          <div class="form-group">
+                                                                              <label for="email" class="form-label">Username:</label>
+                                                                                  <input type="username" id="username" placeholder="Username" class="form-control">
+                                                                          </div>
+                                                                          <div class="form-group">
+                                                                              <label for="password" class="form-label">Email:</label>
+                                                                                  <input type="email" name="email" placeholder="Email" class="form-control">
+                                                                          </div>
+                                                                          <div class="form-group">
+                                                                              <label for="password" class="form-label">Password:</label>
+                                                                                  <input type="password" name="password" placeholder="Password" class="form-control">
+                                                                          </div>
+                                                                          <hr>
+                                                                          <div class="form-group">
+                                                                                  <button type="submit" class="btn btn-primary btn-block">Create User</button>
+                                                                          </div>
+                                                                      </form> <!-- /form -->
+                                                                    </form>
                                                             </div>
-                                                          </div>
+                                                        </div>
                                                       </div>
-                                                    </td>
+                                                  </div>
+
                                                 </tr>
                                             </tbody>
                                         </table>

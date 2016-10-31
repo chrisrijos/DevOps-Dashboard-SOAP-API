@@ -16,7 +16,6 @@
         HomeController.change = "";
 
         HomeController.components = HomeController.components;
-        HomeController.activateFilter = activateFilter;
 
         HomeController.reload = function() {
           $http.get('/SoftwareComponents/showall').then(function (data) {
@@ -34,24 +33,6 @@
             $('#componentDetail').modal('show');
         }
 
-        function activateFilter(filterByStr) {
-            switch(filterByStr) {
-                case "UnitTest":
-                    HomeController.unitTest = !HomeController.unitTest;
-                    break;
-                case "Build":
-                    HomeController.build = !HomeController.build;
-                    break
-                case "QA":
-                    HomeController.QA = !HomeController.QA;
-                    break
-                case "Packaging":
-                    HomeController.packaging = !HomeController.packaging;
-                    break
-                default:
-                    break
-            }
-        }
 
 
            HomeController.column = '';

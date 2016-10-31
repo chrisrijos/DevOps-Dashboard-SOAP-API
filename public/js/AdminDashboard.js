@@ -8,9 +8,17 @@
     function MainController($scope, $location, $http, $timeout) {
         var AdminDashboard = this;
 
+
         AdminDashboard.navigateToOverview = function() {
             $location.path('/home');
         }
+
+        AdminDashboard.userButton = function() {
+            $('#componentDetail').modal('show');
+        };
+
+
+
     };
 
 })();

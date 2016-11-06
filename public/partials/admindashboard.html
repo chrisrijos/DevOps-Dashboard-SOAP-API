@@ -18,63 +18,56 @@
                                         <table class="table component-list">
                                             <thead>
                                                 <tr>
-                                                <th class="text-center"><span>UID</span></th>
-                                                <th class="text-center"><span>User name</span></th>
                                                 <th class="text-center"><span>Email</span></th>
                                                 <th class="text-center"><span>Password</span></th>
-                                                <button class="btn btn-danger pull-right userbutton" ng-click="">Delete User</button>
-                                                <button class="btn btn-primary pull-right userbutton" ng-click="admin.userButton()">Create User</button>
-
+                                                <button class="btn btn-primary pull-right userbutton" ng-click="admin.showNewUserModal()">Create User</button>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="obj in Home.components track by $index">
+                                                <tr ng-repeat="obj in admin.userList track by $index">
                                                     <td>
-                                                        <a href="#" class="user-link" ng-bind="obj['componentName']"></a>
-                                                        <span class="user-subhead" ng-bind="obj['versionName']"></span>
+                                                        <a href="#" class="user-link" ng-bind="obj['email']"></a>
                                                     </td>
-                                                    <td>{{obj.timeInMS | date:'medium'}}</td>
                                                     <td class="text-center">
-                                                        <span class="label label-default" ng-bind="obj['stepName']"></span>
+                                                        <span class="label label-default" ng-bind="obj['password']"></span>
                                                     </td>
                                                     <td>
-                                                        <span class="label label-default" ng-bind="obj['stepResult']"></span>
+                                                        <button class="btn btn-danger pull-right userbutton" ng-click="">Delete User</button>
                                                     </td>
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="componentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                      <div class="container">
-                                                        <div class="row">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
-                                                            <div class="usercard" style="margin-left:250px;">
-                                                                    <form>
-                                                                      <form name="signUpform" id="signUpform" class="form-signup" role="form">
-                                                                        <h3>Please enter the users information</h3>
-                                                                        <hr>
-                                                                        <br>
-                                                                          <div class="form-group">
-                                                                              <label for="email" class="form-label">Username:</label>
-                                                                                  <input type="username" id="username" placeholder="Username" class="form-control">
-                                                                          </div>
-                                                                          <div class="form-group">
-                                                                              <label for="password" class="form-label">Email:</label>
-                                                                                  <input type="email" name="email" placeholder="Email" class="form-control">
-                                                                          </div>
-                                                                          <div class="form-group">
-                                                                              <label for="password" class="form-label">Password:</label>
-                                                                                  <input type="password" name="password" placeholder="Password" class="form-control">
-                                                                          </div>
-                                                                          <hr>
-                                                                          <div class="form-group">
-                                                                                  <button type="submit" class="btn btn-primary btn-block">Create User</button>
-                                                                          </div>
-                                                                      </form> <!-- /form -->
-                                                                    </form>
-                                                            </div>
-                                                        </div>
-                                                      </div>
-                                                  </div>
-
                                                 </tr>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="componentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                  <div class="container">
+                                                    <div class="row">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                                                        <div class="usercard" style="margin-left:250px;">
+                                                                <form>
+                                                                  <form name="signUpform" id="signUpform" class="form-signup" role="form">
+                                                                    <h3>Please enter the users information</h3>
+                                                                    <hr>
+                                                                    <br>
+                                                                      <div class="form-group">
+                                                                          <label for="email" class="form-label">Email:</label>
+                                                                              <input type="email" id="email" placeholder="Email" class="form-control" ng-model="admin.credentials.email">
+                                                                      </div>
+                                                                      <div class="form-group">
+                                                                          <label for="password" class="form-label">Password:</label>
+                                                                              <input type="password" name="password" placeholder="Password" class="form-control" ng-model="admin.credentials.password">
+                                                                      </div>
+                                                                      <div class="form-group">
+                                                                          <label for="password" class="form-label">Confirm Password:</label>
+                                                                              <input type="password" name="password" placeholder="Confirm Password" class="form-control" ng-model="admin.tmp.password">
+                                                                      </div>
+                                                                      <hr>
+                                                                      <div class="form-group">
+                                                                              <button type="submit" class="btn btn-primary btn-block" ng-click="admin.createUser()">Create User</button>
+                                                                      </div>
+                                                                  </form> <!-- /form -->
+                                                                </form>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                              </div>
                                             </tbody>
                                         </table>
                                     </div>

@@ -2,14 +2,14 @@
   <div ng-controller="LoginController as Login">
     <div class="container">
       <div class="col-md-6">
-      <form action="" method="" name="Login_Form" class="form-signin">
+      <ng-form name="Login_Form" class="form-signin">
             <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
             <br>
-            <input type="text" class="form-control" name="email" placeholder="Email" ng-model="Login.email" required="" autofocus="" />
+            <input type="text" class="form-control" name="email" ng-min="3" placeholder="Email" ng-model="Login.email"  autofocus="" required/>
             <br>
-            <input type="password" class="form-control" name="Password" placeholder="Password" ng-model="Login.password" required=""/>
+            <input type="password" class="form-control" name="Password" ng-min="3" placeholder="Password" ng-model="Login.password" required/>
             <br>
-            <button class="form-height btn btn-lg btn-primary btn-block" ng-click="Login.signIn()" name="Submit" value="Login" type="Submit">Login</button>
+            <button ng-disabled="Login_Form.$invalid" class="form-height btn btn-lg btn-primary btn-block" ng-click="Login.signIn()" name="Submit" value="Login" type="Submit">Login</button>
             <br>
         </form>
       </div>

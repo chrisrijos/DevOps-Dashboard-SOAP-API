@@ -42,6 +42,21 @@
             });
         };
 
+        AdminDashboard.deleteUser = function(parameter) {
+            $http.post('/User/delete', parameter)
+            .success(function (data, status, headers, config) {
+                console.log(data)
+            })
+            .error(function (data, status, header, config) {
+            });
+            location.reload();
+        }
+
+        AdminDashboard.confirmDeleteUser = function(user) {
+            AdminDashboard.userToDelete = user;
+            $('#delete').modal('show');
+        }
+
         AdminDashboard.getUsers = function() {
             $http.get('/User/showall').then(function (data) {
                 AdminDashboard.data = data.data;
@@ -50,6 +65,21 @@
                     AdminDashboard.userList.push(user);
                 });
             });
+        }
+
+        AdminDashboard.ensureIntegrity = function(newUser) {
+            if (AdminDashboard.userList.length > 0) {
+                AdminDashboard.userList.forEach(function (user) {
+                    if (newUser.email.toLowerCase() == user.email.toLowerCase()) {
+                        alert("Email address already exists");
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+            } else {
+                console.log("User List Contains no users");
+            }
         }
 
         AdminDashboard.getUsers();

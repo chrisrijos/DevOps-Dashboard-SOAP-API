@@ -33,45 +33,43 @@
             $('#componentDetail').modal('show');
         }
 
+       HomeController.column = '';
+       HomeController.reverse = false;
 
+       HomeController.resetColumn = function(col) {
+         HomeController.column = col;
+             if(HomeController.column == col) {
+               HomeController.column = "";
+             }
+       };
 
-           HomeController.column = '';
-           HomeController.reverse = false;
+       HomeController.sortColumn = function(col){
 
-           HomeController.resetColumn = function(col) {
-             HomeController.column = col;
-                 if(HomeController.column == col) {
-                   HomeController.column = "";
-                 }
-           };
+         HomeController.column = col;
 
-           HomeController.sortColumn = function(col){
+            if(HomeController.reverse){
+              HomeController.reverse = false;
+              HomeController.reverseclass = 'arrow-up';
+            }
+            else {
+              HomeController.reverse = true;
+              HomeController.reverseclass = 'arrow-down';
+            }
+        };
 
-             HomeController.column = col;
-
-                if(HomeController.reverse){
-                  HomeController.reverse = false;
-                  HomeController.reverseclass = 'arrow-up';
-                }
-                else {
-                  HomeController.reverse = true;
-                  HomeController.reverseclass = 'arrow-down';
-                }
-            };
-
-           HomeController.sortClass = function(col){
-             if(HomeController.column == col ){
-                if(HomeController.reverse){
-                    return 'arrow-down';
-                  }
-                  else{
-                    return 'arrow-up';
-                  }
-                }
-                  else{
-                    return '';
-                  }
+       HomeController.sortClass = function(col){
+         if(HomeController.column == col ){
+            if(HomeController.reverse){
+                return 'arrow-down';
               }
+              else{
+                return 'arrow-up';
+              }
+            }
+              else{
+                return '';
+              }
+          }
 
 
         HomeController.navigateToDashboard = function() {

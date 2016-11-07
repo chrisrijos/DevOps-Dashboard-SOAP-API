@@ -32,35 +32,35 @@
                                                         <span class="label label-default" ng-bind="obj['password']"></span>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-danger pull-right userbutton" ng-click="">Delete User</button>
+                                                        <button class="btn btn-danger pull-right userbutton" ng-click="admin.confirmDeleteUser(obj)">Delete User</button>
                                                     </td>
                                                 </tr>
-                                                <!-- Modal -->
+                                                <!-- Modal Add user-->
                                                 <div class="modal fade" id="componentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                   <div class="container">
                                                     <div class="row">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                                                         <div class="usercard" style="margin-left:250px;">
                                                                 <form>
-                                                                  <form name="signUpform" id="signUpform" class="form-signup" role="form">
+                                                                  <ng-form name="signUpform" id="signUpform" class="form-signup" role="form">
                                                                     <h3>Please enter the users information</h3>
                                                                     <hr>
                                                                     <br>
                                                                       <div class="form-group">
                                                                           <label for="email" class="form-label">Email:</label>
-                                                                              <input type="email" id="email" placeholder="Email" class="form-control" ng-model="admin.credentials.email">
+                                                                              <input type="email" id="email" placeholder="Email" class="form-control" ng-model="admin.credentials.email" required>
                                                                       </div>
                                                                       <div class="form-group">
                                                                           <label for="password" class="form-label">Password:</label>
-                                                                              <input type="password" name="password" placeholder="Password" class="form-control" ng-model="admin.credentials.password">
+                                                                              <input type="password" name="password" placeholder="Password" class="form-control" ng-model="admin.credentials.password" required>
                                                                       </div>
                                                                       <div class="form-group">
                                                                           <label for="password" class="form-label">Confirm Password:</label>
-                                                                              <input type="password" name="password" placeholder="Confirm Password" class="form-control" ng-model="admin.tmp.password">
+                                                                              <input type="password" name="password" placeholder="Confirm Password" class="form-control" ng-model="admin.tmp.password" required>
                                                                       </div>
                                                                       <hr>
                                                                       <div class="form-group">
-                                                                              <button type="submit" class="btn btn-primary btn-block" ng-click="admin.createUser()">Create User</button>
+                                                                              <button type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-primary btn-block" ng-click="admin.createUser()">Create User</button>
                                                                       </div>
                                                                   </form> <!-- /form -->
                                                                 </form>
@@ -68,6 +68,26 @@
                                                     </div>
                                                   </div>
                                               </div>
+
+                                              <!--Modal Delete user-->
+                                              <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                      <div class="modal-content">
+                                                          <div class="modal-header">
+                                                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                              <div class="alert alert-danger"></span class="glyphicon glyphicon-warning-sign"></span>Are you sure you want to delete this record <strong>{{admin.userToDelete.email}}</strong></div>
+
+                                                      </div>
+                                                          <div class="modal-footer">
+                                                              <button type="button" class="btn btn-success" ng-click="admin.deleteUser(admin.userToDelete)"><span class="glyphicon glyphicon-ok-sign"></span>Yes</button>
+                                                              <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>No</button>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <!--Delete user end-->
                                             </tbody>
                                         </table>
                                     </div>

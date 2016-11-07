@@ -32,9 +32,6 @@ router.post('/User/new', function(req, res) {
         email: req.body.email,
         password: req.body.password
     }
-    //SECONDARY CHECKS Here
-    //
-    //END
     var role = new User({
         _id: shortid.generate(),
         //_uuid: ,
@@ -42,6 +39,18 @@ router.post('/User/new', function(req, res) {
         password: tmp.password
     });
     role.save();
+});
+
+router.post('/User/delete', function(req, res) {
+    var toDelete = new User({
+        _id: req.body._id,
+        email: req.body.email,
+        password: req.body.password
+    });
+    toDelete.delete(function(err) {
+        if(err) { return console.log(err) }
+        console.log("Deleted");
+    });
 });
 
 module.exports = router;

@@ -3,7 +3,7 @@
     .module('App', ["ui.router", "firebase"])
     .config( function($stateProvider, $urlRouterProvider){
 
-      $urlRouterProvider.otherwise('login'); //default state
+      $urlRouterProvider.otherwise('/login'); //default state
 
       //Sectional Routes
       $stateProvider

@@ -29,7 +29,7 @@
 
         HomeController.reload();
 
-        HomeController.testClick = function() {
+        HomeController.showNotes = function() {
             $('#componentDetail').modal('show');
         }
 

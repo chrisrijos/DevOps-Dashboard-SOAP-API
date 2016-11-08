@@ -4,45 +4,45 @@
         .module('App')
         .controller("LoginController", Controller);
 
-    Controller.$inject = ["$scope", "$firebaseAuth", "firebase", "$location"];
+    Controller.$inject = ["$scope", "$http","$firebaseAuth", "firebase", "$location", "$rootScope"];
 
-    function Controller($scope, $firebaseAuth, firebase, $location) {
+    function Controller($scope, $http, $firebaseAuth, firebase, $location, $rootScope) {
         var LoginController = this;
+        LoginController.userList = [];
+        LoginController.loginForm = {email: "", password: ""};
 
         var auth = $firebaseAuth();
-        var email = "";
-        var password = "";
 
         LoginController.clickMe = LoginController.clickMe;
         LoginController.signIn = LoginController.signIn;
-        LoginController.email = LoginController.email;
-        LoginController.password = LoginController.password;
-
-        LoginController.testClick = function() {
-            console.log("Test");
-        }
-
-        LoginController.signIn = function () {
-            LoginController.firebaseUser = null;
-            LoginController.error = null;
-
-            auth.$signInAnonymously().then( function(firebaseUser) {
-                  $location.path("/home")
-              }).catch(function (error) {
-                  LoginController.error = error;
-              });
-        }
 
         LoginController.signUp = function () {
-          $location.path('/sign_up');
+          $location.path('/home');
         }
 
-        LoginController.clickMe = function () {
-            console.log("CLICKED");
+        LoginController.getUsers = function() {
+            $http.get('/User/showall').then(function (data) {
+                LoginController.data = data.data;
+
+                LoginController.data.forEach(function (user) {
+                    LoginController.userList.push(user);
+                });
+            });
         }
 
-        LoginController.reDirect = function() {
-            $location.path("/sign_up");
+        LoginController.getUsers();
+
+        LoginController.hardAuth = function() {
+            for(var i = 0; i < LoginController.userList.length; i++) {
+                if (LoginController.userList[i].email == LoginController.loginForm.email
+                    && LoginController.userList[i].password == LoginController.loginForm.password) {
+                    console.log("Match Found");
+                    $rootScope.currentUser = LoginController.userList[i];
+                    $location.path('/home');
+                    return true;
+                }
+            }
+            alert("Credentials provided do not match");
         }
     }
 })();

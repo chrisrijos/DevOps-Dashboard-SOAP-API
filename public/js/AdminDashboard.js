@@ -30,6 +30,7 @@
             AdminDashboard.saveUser(AdminDashboard.credentials);
             console.log("Saving: ", AdminDashboard.credentials);
             $('#componentDetail').modal('hide');
+            location.reload();
         };
 
         AdminDashboard.saveUser = function(parameter) {

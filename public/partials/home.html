@@ -17,8 +17,6 @@
                                     <div class="table-responsive">
                                         <table class="table component-list">
                                             <thead>
-                                              <th><a ng-click='obj.componentName = ""; Home.resetColumn();'><span>Clear</span><i class="glyphicon glyphicon-remove"</i></a></th>
-
                                                 <tr>
                                                 <th><span>Component Name</span></th>
                                                 <th><a ng-click='Home.sortColumn("timeInMs")' ng-class='Home.sortClass("timeInMs")'><span>Created</span></a></th>
@@ -59,7 +57,7 @@
                                                       <p class="label label-danger" ng-show="obj.stepResult == 'fail'">{{ obj.stepResult | uppercase}}</p>
                                                     </td>
                                                     <td>
-                                                        <i class="fa fa-search right"></i>
+                                                        <i ng-click="Home.showNotes()" class="fa fa-search right"></i>
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="componentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                           <div class="container">

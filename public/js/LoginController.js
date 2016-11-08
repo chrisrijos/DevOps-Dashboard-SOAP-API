@@ -34,8 +34,8 @@
 
         LoginController.hardAuth = function() {
             for(var i = 0; i < LoginController.userList.length; i++) {
-                if (LoginController.userList[i].email == LoginController.loginForm.email
-                    && LoginController.userList[i].password == LoginController.loginForm.password) {
+                if (LoginController.userList[i].email.toLowerCase() == LoginController.loginForm.email.toLowerCase()
+                    && LoginController.userList[i].password.toLowerCase() == LoginController.loginForm.password.toLowerCase()) {
                     console.log("Match Found");
                     $rootScope.currentUser = LoginController.userList[i];
                     $location.path('/home');

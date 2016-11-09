@@ -18,21 +18,25 @@
                                         <table class="table component-list">
                                             <thead>
                                                 <tr>
-                                                <th class="text-center"><span>Email</span></th>
+                                                <th class="text-center"><a ng-click='admin.sortColumn("_id")' ng-class='admin.sortClass("_id")'>UID</a></th>
+                                                <th class="text-center"><a ng-click='admin.sortColumn("email")' ng-class='admin.sortClass("email")'>Email</a></th>
                                                 <th class="text-center"><span>Password</span></th>
                                                 <button class="btn btn-primary pull-right userbutton" ng-click="admin.showNewUserModal()">Create User</button>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="obj in admin.userList track by $index">
-                                                    <td>
-                                                        <a href="#" class="user-link" ng-bind="obj['email']"></a>
+                                                <tr ng-repeat="obj in admin.userList | orderBy: admin.column:admin.reverse">
+                                                    <td class="text-center">
+                                                        <span href="#" class="userfonttwo label label-default" ng-bind="obj['_id']"></span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <span class="label label-default" ng-bind="obj['password']"></span>
+                                                        <span href="#" class="userfontone label" ng-bind="obj['email']"></span>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="blurry" ng-bind="obj['password']"></span>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-danger pull-right userbutton" ng-click="admin.confirmDeleteUser(obj)">Delete User</button>
+                                                        <span class="glyphicon glyphicon-remove pullright delete" ng-click="admin.confirmDeleteUser(obj)"></span>
                                                     </td>
                                                 </tr>
                                                 <!-- Modal Add user-->

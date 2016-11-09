@@ -84,6 +84,37 @@
         }
 
         AdminDashboard.getUsers();
+
+        AdminDashboard.column = '';
+        AdminDashboard.reverse = false;
+
+        AdminDashboard.sortColumn = function(col){
+
+          AdminDashboard.column = col;
+
+             if(AdminDashboard.reverse){
+               AdminDashboard.reverse = false;
+               AdminDashboard.reverseclass = 'arrow-up';
+             }
+             else {
+               AdminDashboard.reverse = true;
+               AdminDashboard.reverseclass = 'arrow-down';
+             }
+         };
+
+        AdminDashboard.sortClass = function(col){
+          if(AdminDashboard.column == col ){
+             if(AdminDashboard.reverse){
+                 return 'arrow-down';
+               }
+               else{
+                 return 'arrow-up';
+               }
+             }
+               else{
+                 return '';
+               }
+           }
     };
 
 })();

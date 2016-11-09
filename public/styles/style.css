@@ -272,6 +272,41 @@ table th:hover{
   text-align: center;
 }
 
+.delete {
+  cursor: pointer;
+  color: red;
+}
+
+.glyphicon.glyphicon-remove {
+    font-size: 20px;
+}
+
+.blurry {
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+   font-size: 16px;
+   cursor: pointer;
+}
+
+.blurry:hover {
+  cursor: pointer;
+  color: inherit;
+  font-size: 18px;
+}
+
+.userfontone {
+  font-weight: 500;
+  font-size: 16px;
+  color: #0000EE;
+  font-family: sans-serif;
+}
+
+.userfonttwo {
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+}
+
 #custom-search-input{
     padding: 3px;
     border: solid 1px #E4E4E4;

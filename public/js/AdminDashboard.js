@@ -3,9 +3,9 @@
     .module('App')
     .controller('AdminDashboard', MainController);
 
-    MainController.$inject = ["$scope", "$location", "$http", "$timeout", "$firebaseAuth"];
+    MainController.$inject = ["$scope", "$rootScope","$location", "$http", "$timeout", "$firebaseAuth"];
 
-    function MainController($scope, $location, $http, $timeout) {
+    function MainController($scope, $rootScope, $location, $http, $timeout) {
         var AdminDashboard = this;
 
         AdminDashboard.userList = [];

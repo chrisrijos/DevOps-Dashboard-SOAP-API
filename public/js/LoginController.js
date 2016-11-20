@@ -38,6 +38,7 @@
                     && LoginController.userList[i].password.toLowerCase() == LoginController.loginForm.password.toLowerCase()) {
                     console.log("Match Found");
                     $rootScope.currentUser = LoginController.userList[i];
+                    console.log($rootScope.currentUser);
                     $location.path('/home');
                     return true;
                 }

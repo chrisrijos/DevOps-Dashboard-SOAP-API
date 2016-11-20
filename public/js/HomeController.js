@@ -3,9 +3,9 @@
     .module('App')
     .controller('HomeController', MainController);
 
-    MainController.$inject = ["$scope", "$location", "$http", "$timeout"];
+    MainController.$inject = ["$scope", "$rootScope","$location", "$http", "$timeout"];
 
-    function MainController($scope, $location, $http, $timeout) {
+    function MainController($scope, $rootScope, $location, $http, $timeout) {
         var HomeController = this;
         HomeController.components = [];
 
@@ -26,6 +26,8 @@
               });
           });
         };
+
+        console.log($rootScope.currentUser);
 
         HomeController.reload();
 
@@ -70,6 +72,14 @@
                 return '';
               }
           }
+
+        HomeController.falsify = function() {
+            if ($rootScope.currentUser.email == 'group4@group4.com') {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
 
         HomeController.navigateToDashboard = function() {
